@@ -132,9 +132,11 @@ Before you begin, ensure that you have the following prerequisites installed:
 
 >  `ℹ️ Python Package Installer `
 
->  `ℹ️ Python library: curses`
+>  `ℹ️ Python library: curses `
 
->  `ℹ️ Python library: tkinter`
+>  `ℹ️ Python library: tkinter `
+
+>  `ℹ️ Internet connection `
 
 ### 💻 Installation
 
@@ -160,14 +162,10 @@ python --version && pip --version
 ```
 
 ### 🎮 Using OSFortify
-
+1. Run Powershell as administrator.
+2. Execute:
 ```sh
 python osfortify.py
-```
-
-### 🧪 Running Tests
-```sh
-pytest
 ```
 
 ---
