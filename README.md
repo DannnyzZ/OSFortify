@@ -125,10 +125,15 @@ The project README-AI is a tool that automatically generates high-level summarie
 ### ✔️ Prerequisites
 
 Before you begin, ensure that you have the following prerequisites installed:
+
 >  `ℹ️ Windows 10/11`
+
 >  `ℹ️ Python`
+
 >  `ℹ️ Python Package Installer `
+
 >  `ℹ️ Python library: curses`
+
 >  `ℹ️ Python library: tkinter`
 
 ### 💻 Installation
