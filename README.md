@@ -5,7 +5,6 @@
 <br>
 </h1>
 <p align="center">
-
 </p>
 
 <p align="center">
@@ -34,17 +33,17 @@
 - [📒 Table of Contents](#-table-of-contents)
 - [📍 Overview](#-overview)
 - [⚙️ Features](#️-features)
-- [📂 Project Structure](#-project-structure)
 - [🧩 Modules](#-modules)
 - [🚀 Getting Started](#-getting-started)
   - [✔️ Prerequisites](#️-prerequisites)
   - [💻 Installation](#-installation)
-  - [🎮 Using readme-ai](#-using-readme-ai)
+  - [🎮 Using OSFortify](#-using-OSFortify)
   - [🧪 Running Tests](#-running-tests)
 - [🗺 Roadmap](#-roadmap)
 - [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
 - [👏 Acknowledgments](#-acknowledgments)
+
 
 ---
 
@@ -69,98 +68,6 @@ The project README-AI is a tool that automatically generates high-level summarie
 | **🔀 Version Control** | The code repository uses Git for version control. It provides a version history, facilitates collaboration, and allows for easy branching and merging of code changes.                                                        |
 | **🔌 Integrations**    | The codebase integrates with external services and tools such as the OpenAI API, Git repositories, and Docker containers. These integrations enhance the functionality and flexibility of the application.                       |
 | **📶 Scalability**     | The codebase does not explicitly address scalability. However, by using modular design and external services, the application can potentially handle growth and can be extended to support additional features in the future.   |
-
----
-
-
-## 📂 Project Structure
-
-
-```bash
-repo
-├── CODE_OF_CONDUCT.md
-├── CONTRIBUTING.md
-├── Dockerfile
-├── LICENSE
-├── Makefile
-├── README.md
-├── conf
-│   ├── conf.toml
-│   ├── dependency_files.toml
-│   ├── ignore_files.toml
-│   ├── language_names.toml
-│   ├── language_setup.toml
-│   └── svg
-│       ├── badges.json
-│       └── badges_compressed.json
-├── examples
-│   ├── imgs
-│   │   ├── closing.png
-│   │   ├── demo.png
-│   │   ├── features.png
-│   │   ├── getting_started.png
-│   │   ├── header.png
-│   │   ├── modules.png
-│   │   ├── overview.png
-│   │   └── tree.png
-│   ├── readme-c.md
-│   ├── readme-energy-forecasting.md
-│   ├── readme-fastapi-redis.md
-│   ├── readme-fastapi.md
-│   ├── readme-gitlab.md
-│   ├── readme-go-bash.md
-│   ├── readme-go.md
-│   ├── readme-java.md
-│   ├── readme-javascript-gpt.md
-│   ├── readme-javascript.md
-│   ├── readme-kotlin.md
-│   ├── readme-lanarky.md
-│   ├── readme-mlops.md
-│   ├── readme-pyflink.md
-│   ├── readme-python-ml.md
-│   ├── readme-python.md
-│   ├── readme-react.md
-│   ├── readme-rust-c.md
-│   ├── readme-rust.md
-│   └── readme-typescript.md
-├── poetry.lock
-├── pyproject.toml
-├── requirements.txt
-├── scripts
-│   ├── clean.sh
-│   ├── run.sh
-│   ├── run_batch.sh
-│   └── test.sh
-├── setup
-│   ├── environment.yaml
-│   └── setup.sh
-├── setup.py
-├── src
-│   ├── __init__.py
-│   ├── builder.py
-│   ├── conf.py
-│   ├── factory.py
-│   ├── logger.py
-│   ├── main.py
-│   ├── model.py
-│   ├── parse.py
-│   ├── preprocess.py
-│   └── utils.py
-└── tests
-    ├── __init__.py
-    ├── conftest.py
-    ├── test_builder.py
-    ├── test_conf.py
-    ├── test_factory.py
-    ├── test_logger.py
-    ├── test_main.py
-    ├── test_model.py
-    ├── test_parse.py
-    ├── test_preprocess.py
-    └── test_utils.py
-
-9 directories, 72 files
-```
 
 ---
 
@@ -218,15 +125,23 @@ repo
 ### ✔️ Prerequisites
 
 Before you begin, ensure that you have the following prerequisites installed:
-> - `ℹ️ Requirement 1`
-> - `ℹ️ Requirement 2`
-> - `ℹ️ ...`
+> - `ℹ️ Windows 10/11`
+> - `ℹ️ Python`
+> - `ℹ️ Python Package Installer (PIP `
+> - `ℹ️ Python library: curses`
+> - `ℹ️ Python library: tkinter`
 
 ### 💻 Installation
 
-1. Clone the readme-ai repository:
+1. Install python
 ```sh
-git clone https://github.com/eli64s/readme-ai
+1.	Visit the official Python website: https://www.python.org/downloads/
+2.	Go to the Downloads section and choose the version of Python you want to install (e.g., Python 3.9.6).
+3.	Scroll down to the bottom of the page and select the installer that matches your system architecture (32-bit or 64-bit).
+4.	Run the downloaded installer.
+5.	In the installer, select the option to add Python to the system PATH, which will make it accessible from the command line.
+6.	Make sure that in optional features you choose pip to be installed.
+7.	Complete the installation by following the on-screen instructions.
 ```
 
 2. Change to the project directory:
@@ -255,9 +170,12 @@ pytest
 
 ## 🗺 Roadmap
 
-> - [X] `ℹ️  Task 1: Implement X`
-> - [ ] `ℹ️  Task 2: Refactor Y`
-> - [ ] `ℹ️ ...`
+> - [X] `ℹ️  Task 1: Multiple bug fixes`
+> - [X] `ℹ️  Task 2: New features: tidy and colored output`
+
+> - [ ] `ℹ️  Incoming feature 1: Exporting results to PDF file`
+> - [ ] `ℹ️  Incoming feature 2: New services: HDMI, Mini-Jack, DVI, CD-DVD, CTRL+ALT+DEL on login prompt, Trivial File Transfer Protocol (TFTP) `
+> - [ ] `ℹ️  Incoming feature 3: One button evaluation of security state (Risk analysis) `
 
 
 ---
@@ -287,7 +205,7 @@ The project maintainers will review your changes and provide feedback or merge t
 
 ## 📄 License
 
-This project is licensed under the `ℹ️  INSERT-LICENSE-TYPE` License. See the [LICENSE](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository) file for additional info.
+This project is licensed under the `ℹ️  MIT` License. 
 
 ---
 
