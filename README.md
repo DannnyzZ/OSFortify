@@ -1,9 +1,9 @@
 
 <div align="center">
 <h1 align="center">
-<img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" />
+<img src="![OSFortify_logo_wide](https://github.com/DannnyzZ/OSFortify/assets/119814239/b01e3d0e-1ec1-4e9c-933c-a29d85b4d3d6)"/>
 <br>
-readme-ai
+OSFortify
 </h1>
 <h3>◦ Smarter docs, powered by AI!</h3>
 <h3>◦ Developed with the software and tools listed below.</h3>
