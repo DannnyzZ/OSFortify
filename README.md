@@ -1,6 +1,16 @@
-<p align="center">
+
+<div align="center">
+<h1 align="center">
 <img src="https://github.com/DannnyzZ/OSFortify/blob/main/OSFortify_logo_wide.jpg" >
+<br>
+OSFortify
+</h1>
+  
+<p align="center">
+
 </p>
+
+
 
 <p align="center">
 <img src="https://i.pinimg.com/originals/71/21/d5/7121d581f292b50843cd7f70d91dd9ef.gif" width="20%">
