@@ -125,11 +125,11 @@ The project README-AI is a tool that automatically generates high-level summarie
 ### ✔️ Prerequisites
 
 Before you begin, ensure that you have the following prerequisites installed:
-> - `ℹ️ Windows 10/11`
-> - `ℹ️ Python`
-> - `ℹ️ Python Package Installer (PIP `
-> - `ℹ️ Python library: curses`
-> - `ℹ️ Python library: tkinter`
+>  `ℹ️ Windows 10/11`
+>  `ℹ️ Python`
+>  `ℹ️ Python Package Installer `
+>  `ℹ️ Python library: curses`
+>  `ℹ️ Python library: tkinter`
 
 ### 💻 Installation
 
@@ -144,20 +144,20 @@ Before you begin, ensure that you have the following prerequisites installed:
 7.	Complete the installation by following the on-screen instructions.
 ```
 
-2. Change to the project directory:
+2. Install dependencies
 ```sh
-cd readme-ai
+pip install pip & pip install tk windows-curses
 ```
 
-3. Install the dependencies:
+3. Check version of python and pip:
 ```sh
-pip install -r requirements.txt
+python --version && pip --version
 ```
 
-### 🎮 Using readme-ai
+### 🎮 Using OSFortify
 
 ```sh
-python main.py
+python osfortify.py
 ```
 
 ### 🧪 Running Tests
