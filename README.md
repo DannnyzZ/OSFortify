@@ -1,12 +1,7 @@
 
-<div align="center">
-<h1 align="center">
 <p align="center">
   <img src="![OSFortify_logo_wide](https://github.com/DannnyzZ/OSFortify/assets/119814239/9a1693ee-a7a4-4957-969f-9c92a56fff8e)"/>
-</p>
-<br>
 OSFortify
-</h1>
 <h3>◦ Smarter docs, powered by AI!</h3>
 <h3>◦ Developed with the software and tools listed below.</h3>
 
