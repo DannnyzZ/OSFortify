@@ -190,18 +190,18 @@ pytest
 Contributions are always welcome! Please follow these steps:
 1. Fork the project repository. This creates a copy of the project on your account that you can modify without affecting the original project.
 2. Clone the forked repository to your local machine using a Git client like Git or GitHub Desktop.
-3. Create a new branch with a descriptive name (e.g., `new-feature-branch` or `bugfix-issue-123`).
+3. Create a new branch with a descriptive name (e.g., `NEW_FIX`).
 ```sh
-git checkout -b new-feature-branch
+git checkout -b NEW_FIX
 ```
 4. Make changes to the project's codebase.
 5. Commit your changes to your local branch with a clear commit message that explains the changes you've made.
 ```sh
-git commit -m 'Implemented new feature.'
+git commit -m 'Applied changes.'
 ```
 6. Push your changes to your forked repository on GitHub using the following command
 ```sh
-git push origin new-feature-branch
+git push origin NEW_FIX
 ```
 7. Create a new pull request to the original project repository. In the pull request, describe the changes you've made and why they're necessary.
 The project maintainers will review your changes and provide feedback or merge them into the main branch.
@@ -216,6 +216,8 @@ This project is licensed under the `ℹ️  MIT` License.
 
 ## 👏 Acknowledgments
 
-> - `ℹ️  List any resources, contributors, inspiration, etc.`
+> - `ℹ️  Stack Overflow`
+> - `ℹ️  ChatGPT 4.0`
+> - `ℹ️  readme-ai https://github.com/eli64s/readme-ai`
 
 ---
