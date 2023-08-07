@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/DannnyzZ/OSFortify/blob/main/OSFortify_logo_wide.jpg" width="20%">
+<img src="https://github.com/DannnyzZ/OSFortify/blob/main/OSFortify_logo_wide.jpg" >
 </p>
 
 <p align="center">
