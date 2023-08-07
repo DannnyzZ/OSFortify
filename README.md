@@ -2,9 +2,9 @@
 <img src="(https://github.com/DannnyzZ/OSFortify/blob/main/OSFortify_logo_wide.jpg)" width="20%">
 </p>
 
-OSFortify
-<h3>◦ Smarter docs, powered by AI!</h3>
-<h3>◦ Developed with the software and tools listed below.</h3>
+<p align="center">
+<img src="https://i.pinimg.com/originals/71/21/d5/7121d581f292b50843cd7f70d91dd9ef.gif" width="20%">
+</p>
 
 <p align="center">
 <img src="https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style&logo=GNU-Bash&logoColor=white" alt="GNU%20Bash" />
