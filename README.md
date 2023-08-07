@@ -1,8 +1,9 @@
 
 <div align="center">
 <h1 align="center">
-![OSFortify_logo_wide](https://github.com/DannnyzZ/OSFortify/assets/119814239/c06cc61d-42e2-423f-a95e-51b2de991071)
-
+<p align="center">
+  <img src="![OSFortify_logo_wide](https://github.com/DannnyzZ/OSFortify/assets/119814239/9a1693ee-a7a4-4957-969f-9c92a56fff8e)"/>
+</p>
 <br>
 OSFortify
 </h1>
