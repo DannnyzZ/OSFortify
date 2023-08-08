@@ -212,6 +212,10 @@ python --version && pip --version
 python osfortify.py
 ```
 3. WARNING! Make sure You provide the correct location of OSFortify.
+4. Example of use:
+```sh
+python C:\Users\Danny\Desktop\osfortify.py
+```
 
 ---
 
