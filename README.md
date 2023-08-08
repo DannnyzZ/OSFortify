@@ -39,7 +39,7 @@
   - [✔️ Prerequisites](#️-prerequisites)
   - [💻 Installation](#-installation)
   - [🎮 Using OSFortify](#-using-OSFortify)
-  - [⚠️ Warning](#-warning)  <!-- To jest zakotwienie -->
+  - [⚠️ Warning](#-warning)
 - [🗺 Roadmap](#-roadmap)
 - [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
@@ -229,7 +229,8 @@ python C:\Users\Danny\Desktop\osfortify.py
 ---
 
 
-### ⚠️ Warning
+## ⚠️ Warning
+
 
 **Using OSFortify Safely:**
 
