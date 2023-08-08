@@ -39,6 +39,7 @@
   - [💻 Installation](#-installation)
   - [🎮 Using OSFortify](#-using-OSFortify)
   - [🧪 Running Tests](#-running-tests)
+  - [⚠️ Warning](#-warning)
 - [🗺 Roadmap](#-roadmap)
 - [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
@@ -219,6 +220,12 @@ python C:\Users\Danny\Desktop\osfortify.py
 
 ---
 
+
+### ⚠️ Warning
+1. Notes
+2. ds
+3. dsds
+4. 
 
 ## 🗺 Roadmap
 
