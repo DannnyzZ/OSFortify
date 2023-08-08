@@ -51,7 +51,10 @@
 
 ## 📍 Overview
 
-The project README-AI is a tool that automatically generates high-level summaries for codebases using OpenAI's text generation model. It analyzes code repositories, extracts information about dependencies and file structure, and generates a Markdown file with a comprehensive summary of the codebase. The tool saves developers time by providing them with a ready-to-use README file that includes key information about the project. Its value proposition lies in its ability to quickly produce informative and standardized project documentation, making it easier for developers to understand, use, and collaborate on codebases.
+OSFortify is a sophisticated terminal-based utility designed to enhance system security, streamline operating system hardening, and facilitate efficient system administration. With a focus on cybersecurity, system integrity, and user-friendly interactions, OSFortify empowers users to manage various aspects of their system's services, features, and ports through a secure and organized interface.
+
+The primary **purpose** of OSFortify is to provide an advanced yet accessible tool for users to bolster their system's security posture, elevate operating system hardening, and seamlessly administer critical system functions. By enabling users to interact with their system through a curated selection of options, OSFortify bridges the gap between cybersecurity and user experience.
+
 
 ---
 
@@ -59,16 +62,18 @@ The project README-AI is a tool that automatically generates high-level summarie
 
 | Feature                | Description                                                                                                                                                    |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **⚙️ Architecture**    | The codebase follows a modular architecture, with different files and modules responsible for specific tasks. The use of factories, wrappers, and handlers promotes code organization and separation of concerns. |
-| **📖 Documentation**   | The codebase is well-documented, with detailed explanations of each file's purpose and functionality. The provided summaries are informative and help understand the codebase.                                        |
-| **🔗 Dependencies**    | The code relies on external libraries such as pandas and requests for data manipulation and HTTP requests. It uses Git, Python, conda, and additional tools like Tree and SnakeViz for development processes.                                                               |
-| **🧩 Modularity**      | The codebase demonstrates modularity by separating functionalities into different modules and classes. Each module focuses on one aspect of the project, which makes the codebase more maintainable and reusable.                     |
-| **✔️ Testing**         | The codebase has a testing strategy, as evidenced by the presence of a test script. It uses the pytest framework for generating a test coverage report and the SnakeViz tool for analyzing the profiled output.                             |
-| **⚡️ Performance**     | The overall performance of the codebase appears to be efficient. The code utilizes Pandas for data manipulation, performance profiling, and optimization techniques to ensure good performance.                          |
-| **🔐 Security**        | The codebase does not directly handle security-related functionality. However, it generates an OpenAI API key, and handling it securely is important to protect access to the AI model.                                    |
-| **🔀 Version Control** | The code repository uses Git for version control. It provides a version history, facilitates collaboration, and allows for easy branching and merging of code changes.                                                        |
-| **🔌 Integrations**    | The codebase integrates with external services and tools such as the OpenAI API, Git repositories, and Docker containers. These integrations enhance the functionality and flexibility of the application.                       |
-| **📶 Scalability**     | The codebase does not explicitly address scalability. However, by using modular design and external services, the application can potentially handle growth and can be extended to support additional features in the future.   |
+| **⚡️ Efficient Admininistration** | The program streamlines system administration by offering a user-friendly interface to manage services and features. This enhances operational efficiency by minimizing manual command-line interactions and simplifying routine tasks. |
+| **🧩 Modularity** | The program's design demonstrates modularity by organizing functionalities into distinct modules and classes. Each module focuses on specific aspects of system security, administration, and hardening, enhancing maintainability and reusability. 
+- *Services and Features*
+OSFortify encompasses a comprehensive range of essential services and features, including guest user account management, FTP control, oversight of Windows Media Player, and management of USB ports. These functionalities contribute significantly to system security by offering control over potential entry points, data transfers, and media-related threats.
+- *Windows Features*
+The program covers an array of critical Windows features, including Windows Defender, Windows Firewall, Windows Update, remote management functionalities, and more. By providing control over these features, OSFortify enhances cybersecurity by allowing administrators to fortify defenses, manage remote access, and stay updated against known vulnerabilities.
+- *Ports*
+OSFortify encompasses an extensive list of important ports, such as SSH (Port 22), HTTPS (Port 443), RDP (Port 3389), and many more. These ports serve as critical communication channels, and their proper management through OSFortify enhances cybersecurity by preventing unauthorized access, securing data transfers, and protecting against potential exploits. |
+| **✔️ Secure Execution** | OSFortify emphasizes secure execution of commands and scripts, crucial for system integrity and cybersecurity. It ensures proper progress tracking during script execution and safeguards against unauthorized access. |
+| **🔐 Enhanced Security** | OSFortify contributes to enhanced security by enabling users to selectively manage services, features, and ports. This granular control aids in system hardening, mitigating potential vulnerabilities, and bolstering overall cybersecurity measures. |
+| **🔌 Flexibility** | The program's dynamic configuration switching and adaptable options provide flexibility to tailor system settings to specific needs. This accommodates various security profiles and allows users to optimize their systems for different scenarios. |
+| **📶 Insightful Data** | OSFortify offers users valuable insights into their system's architecture through detailed system information retrieval. This aids decision-making, system understanding, and helps identify potential areas for further optimization. |
 
 ---
 
