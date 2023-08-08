@@ -29,6 +29,7 @@
 
 ---
 
+
 ## 📒 Table of Contents
 - [📒 Table of Contents](#-table-of-contents)
 - [📍 Overview](#-overview)
@@ -38,7 +39,7 @@
   - [✔️ Prerequisites](#️-prerequisites)
   - [💻 Installation](#-installation)
   - [🎮 Using OSFortify](#-using-OSFortify)
-  - [⚠️ Warning](#-warning)
+  - [⚠️ Warning](#-warning)  <!-- To jest zakotwienie -->
 - [🗺 Roadmap](#-roadmap)
 - [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
