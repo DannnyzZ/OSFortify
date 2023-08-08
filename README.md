@@ -175,6 +175,10 @@ OSFortify encompasses an extensive list of important ports, such as SSH (Port 22
 
 ## 🚀 Getting Started
 
+<div align="center">
+  <img src="https://github.com/DannnyzZ/OSFortify/assets/119814239/6efb41d6-b8fd-4ff9-95bc-df65f1b2ad9e" alt="gui_screen">
+</div>
+
 ### ✔️ Prerequisites
 
 Before you begin, ensure that you have the following prerequisites installed:
@@ -215,6 +219,7 @@ python --version && pip --version
 ```
 
 ### 🎮 Using OSFortify
+
 1. Run Powershell as administrator.
 2. Execute:
 ```sh
