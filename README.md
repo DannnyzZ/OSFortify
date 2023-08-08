@@ -258,8 +258,10 @@ This project is licensed under the `ℹ️  MIT` License.
 
 ## 👏 Acknowledgments
 
-> - `ℹ️  Stack Overflow`
-> - `ℹ️  ChatGPT 4.0`
-> - `ℹ️  readme-ai https://github.com/eli64s/readme-ai`
+  `ℹ️  Stack Overflow`
+   
+  `ℹ️  ChatGPT 4.0`
+   
+  `ℹ️  readme-ai https://github.com/eli64s/readme-ai`
 
 ---
