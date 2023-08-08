@@ -8,14 +8,12 @@
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/PowerShell-5391FE.svg?style&logo=PowerShell&logoColor=white" alt="PowerShell" />
   <img src="https://img.shields.io/badge/Batch-Script-4EAA25.svg?style=flat&logo=Windows%20Terminal&logoColor=white" alt="Batch Script" />
   <img src="https://img.shields.io/badge/OpenAI-412991.svg?style&logo=OpenAI&logoColor=white" alt="OpenAI" />
   <img src="https://img.shields.io/badge/Python-3776AB.svg?style&logo=Python&logoColor=white" alt="Python" />
-  <img src="https://img.shields.io/badge/PowerShell-5391FE.svg?style&logo=PowerShell&logoColor=white" alt="PowerShell" />
+  <img src="https://img.shields.io/badge/GitHub-Profile-181717.svg?style=flat&logo=GitHub&logoColor=white" alt="GitHub Profile" />
   <img src="https://img.shields.io/badge/OS%20Hardening-FFA500.svg" alt="OS%20Hardening" />
-
-  <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF.svg?style&logo=GitHub-Actions&logoColor=white" alt="GitHub%20Actions" />
-  <img src="https://img.shields.io/badge/Pytest-0A9EDC.svg?style&logo=Pytest&logoColor=white" alt="Pytest" />
   <img src="https://img.shields.io/badge/Markdown-000000.svg?style&logo=Markdown&logoColor=white" alt="Markdown" />
   <img src="https://img.shields.io/badge/JSON-000000.svg?style&logo=JSON&logoColor=white" alt="JSON" />
 </p>
