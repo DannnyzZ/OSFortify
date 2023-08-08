@@ -295,6 +295,9 @@ This project is licensed under the `ℹ️  MIT` License.
    
   `ℹ️  ChatGPT 4.0`
    
-  `ℹ️  readme-ai https://github.com/eli64s/readme-ai`
+  `ℹ️  Readme-ai https://github.com/eli64s/readme-ai`
+
+  `ℹ️  Logo.com https://logo.com`
+  
 
 ---
