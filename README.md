@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style&logo=GNU-Bash&logoColor=white" alt="GNU%20Bash" />
+  <img src="https://img.shields.io/badge/Batch-Script-4EAA25.svg?style=flat&logo=Windows%20Terminal&logoColor=white" alt="Batch Script" />
   <img src="https://img.shields.io/badge/OpenAI-412991.svg?style&logo=OpenAI&logoColor=white" alt="OpenAI" />
   <img src="https://img.shields.io/badge/Python-3776AB.svg?style&logo=Python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/PowerShell-5391FE.svg?style&logo=PowerShell&logoColor=white" alt="PowerShell" />
@@ -21,8 +21,9 @@
 </p>
 
 
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/eli64s/readme-ai?style&color=5D6D7E)
 ![GitHub license](https://img.shields.io/github/license/eli64s/readme-ai?style&color=5D6D7E)
+![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-4429-25A9E0.svg?style=flat)
+![Code Size](https://img.shields.io/badge/Code%20Size-185%20KB-25A9E0.svg?style=flat)
 </div>
 
 ---
