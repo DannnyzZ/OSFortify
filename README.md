@@ -73,48 +73,92 @@ The project README-AI is a tool that automatically generates high-level summarie
 
 ## 🧩 Modules
 
-<details closed><summary>Root</summary>
+<details closed><summary>Services</summary>
 
-| File                                                                   | Summary                                                                                                                                                                                                            |
+| Service                                                                   | Details                                                                                                                                                                                                            |
 | ---                                                                    | ---                                                                                                                                                                                                                |
-| [Dockerfile](https://github.com/eli64s/readme-ai/blob/main/Dockerfile) | This Dockerfile sets up a Python environment in a container by installing Git and Python dependencies, copying project files, and running a main.py file as the entry point command.                               |
-| [Makefile](https://github.com/eli64s/readme-ai/blob/main/Makefile)     | This makefile provides commands to facilitate code formatting, cleaning, creating conda and virtual environments, profiling code using cProfile, and analyzing the profiled output using SnakeViz.                 |
-| [setup.py](https://github.com/eli64s/readme-ai/blob/main/setup.py)     | The provided code is a setup script for the README-AI package. It defines the required packages, author information, project details, and dependencies. It also specifies keywords, classifiers, and project URLs. |
+| Windows Defender | Protocol: N/A. Function: Antivirus and antimalware tool. Use: System protection. Security: Reliable; ensure regular updates for best protection. |
+| Windows Firewall | Protocol: N/A. Function: Filters incoming/outgoing network traffic. Use: Network security. Security: Essential for system protection; configure rules appropriately. |
+| Windows Update | Protocol: N/A. Function: Provides system and software updates. Use: System maintenance. Security: Critical for patching vulnerabilities; keep automatic updates on. |
+| Windows Remote Registry | Protocol: N/A. Function: Access to system registry remotely. Use: System administration. Security: Risky; disable unless specifically needed. |
+| Windows Remote Management | Protocol: TCP. Function: Remote administration tool. Use: System administration. Security: Secure endpoints; restrict access. |
+| Windows Management Instrumentation (WMI) | Protocol: N/A. Function: Management infrastructure for Windows. Use: System monitoring and management. Security: Potential target; ensure proper configuration. |
+| Remote Desktop Protocol (RDP) | Protocol: TCP/UDP. Function: Remote desktop access. Use: Remote system management. Security: High-risk; enable Network Level Authentication and restrict access. |
+| Windows Error Reporting | Protocol: N/A. Function: Sends error reports to Microsoft. Use: Debugging. Security: Minor risk; sensitive info might be sent. |
+| Windows Remote Assistance | Protocol: N/A. Function: Remote system help and support. Use: Tech support. Security: Secure sessions; only use with trusted parties. |
+| Windows Fax and Scan | Protocol: N/A. Function: Send/receive faxes; scan documents. Use: Office tasks. Security: Ensure secure configurations for fax transmissions. |
+| Internet Printing Client | Protocol: N/A. Function: Allows printing over the internet. Use: Remote printing. Security: Ensure secure network and printer configurations. |
+| Universal Plug and Play (UPnP) | Protocol: N/A. Function: Automatic device discovery and configuration. Use: Device connectivity. Security: Known vulnerabilities; disable unless needed. |
+| Bluetooth | Protocol: N/A. Function: Short-range wireless communication. Use: Device pairing. Security: Vulnerable to "bluejacking"; turn off when not in use. |
+| Windows Search | Protocol: N/A. Function: Search tool for files and apps. Use: File and application access. Security: Ensure indexing of sensitive data is restricted. |
+| Print Spooler | Protocol: N/A. Function: Manages print tasks. Use: Printing tasks. Security: Known vulnerabilities; update regularly and restrict access. |
+| Microsoft IIS | Protocol: TCP. Function: Web server software. Use: Hosting web applications. Security: Regularly update and harden configurations. |
+| NetBIOS | Protocol: TCP/UDP. Function: Legacy network support. Use: Windows networking. Security: Known vulnerabilities; restrict or disable. |
+| Link-Local Multicast Name Resolution (LLMNR) | Protocol: N/A. Function: Resolves single-label domains. Use: Network operations. Security: Vulnerable to spoofing; consider disabling. |
+| Server Message Block Version 1 (SMB1) | Protocol: TCP/UDP. Function: File sharing protocol. Use: Network file sharing. Security: Deprecated due to vulnerabilities; disable. |
+| Server Message Block Version 2 (SMB2) | Protocol: TCP/UDP. Function: Updated file sharing protocol. Use: Network file sharing. Security: More secure than SMB1; ensure up-to-date configurations. |
+| Telnet | Protocol: TCP. Function: Remote command-line access. Use: Remote system administration. Security: Unencrypted; use SSH as a more secure alternative. |
 
 </details>
 
-<details closed><summary>Setup</summary>
+<details closed><summary>Features</summary>
 
-| File                                                                     | Summary                                                                                                                                                                                                                                               |
+| Feature                                                                     | Details                                                                                                                                                                                                                                               |
 | ---                                                                      | ---                                                                                                                                                                                                                                                   |
-| [setup.sh](https://github.com/eli64s/readme-ai/blob/main/setup/setup.sh) | This code snippet checks if a conda environment exists, installs the "tree" command if it's not installed, ensures the presence of Git and Python 3.7+, creates a conda environment named "readme_ai" with Python 3.8 and installs required packages. |
+| Guest user account | Protocol: N/A. Function: Provides limited access to a system without a personalized login. Use: Temporary or restricted access. Security: Risky; can be exploited if not properly restricted. |
+| File Transfer Protocol (FTP) | Protocol: TCP. Function: Protocol for transferring files over a network. Use: File sharing and download/upload. Security: Unencrypted; use FTPS or SFTP for secure transfers. |
+| Windows Media Player | Protocol: N/A. Function: Media player for viewing/hearing media files. Use: Multimedia playback. Security: Vulnerabilities may arise from codecs/plugins; ensure updates. |
+| USB ports | Protocol: N/A. Function: Interface for connecting external devices. Use: Data transfer, device charging, peripheral connections. Security: Potential for malicious device connections or data theft; use device controls. |
 
 </details>
 
-<details closed><summary>Scripts</summary>
+<details closed><summary>Ports</summary>
 
-| File                                                                               | Summary                                                                                                                                                                                                                                                                                                                 |
+| Port                                                                               | Details                                                                                                                                                                                                                                                                                                           |
 | ---                                                                                | ---                                                                                                                                                                                                                                                                                                                     |
-| [run_batch.sh](https://github.com/eli64s/readme-ai/blob/main/scripts/run_batch.sh) | The code snippet is a Bash script that loops through a list of GitHub repository URLs and runs a Python script called "main.py" for each repository. The Python script takes the repository URL as input and generates a markdown file named "readme-[repository_name].md" as output.                                   |
-| [run.sh](https://github.com/eli64s/readme-ai/blob/main/scripts/run.sh)             | This code snippet is a Bash script that activates a conda environment named "readme_ai" and runs a Python script called "main.py". The script sets the options to exit on error and fail on pipe failures at the beginning. It also exports environment variables, if needed, and requires an OpenAI API key to be set. |
-| [clean.sh](https://github.com/eli64s/readme-ai/blob/main/scripts/clean.sh)         | This code snippet is a Bash script that removes unwanted files and directories commonly found in a Python project. It deletes backup files, Python cache files, cache directories, VS Code settings, build artifacts, pytest cache, benchmark files, and specific files like logs and raw data.                         |
-| [test.sh](https://github.com/eli64s/readme-ai/blob/main/scripts/test.sh)           | The provided code snippet activates a Conda environment named readme_ai. It generates a coverage report using pytest, excluding specified directories and files. It sets a minimum coverage threshold of 90%. After generating the report, it removes unnecessary files and folders.                                    |
-
-</details>
-
-<details closed><summary>Src</summary>
-
-| File                                                                             | Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| ---                                                                              | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| [preprocess.py](https://github.com/eli64s/readme-ai/blob/main/src/preprocess.py) | The provided code snippet is a module for preprocessing a codebase. It includes classes for wrapping the repository parser, analyzing local or remote git repositories, generating file information, tokenizing content, mapping file extensions to programming languages, and extracting dependency file contents. The code handles various file formats and uses pandas for data manipulation.                                                                                                                                                                                               |
-| [conf.py](https://github.com/eli64s/readme-ai/blob/main/src/conf.py)             | The code snippet defines multiple data classes that store configuration constants for README-AI. It includes classes for API configuration, Git repository configuration, Markdown configuration, paths to configuration files, prompts configuration, and the main application configuration. Additionally, there is a helper class that loads and stores additional configuration settings from TOML files. Overall, the code organizes and manages configuration constants necessary for README-AI.                                                                                         |
-| [logger.py](https://github.com/eli64s/readme-ai/blob/main/src/logger.py)         | The provided code snippet defines a custom logger class that wraps the functionality of the logging module. It supports multiple log levels, such as info, debug, warning, error, and critical, and uses a colored formatter for log messages. The class ensures that only one instance of the logger is created and allows logging to be configured with different log levels.                                                                                                                                                                                                                |
-| [factory.py](https://github.com/eli64s/readme-ai/blob/main/src/factory.py)       | This code snippet provides a factory class that handles file input/output operations. It supports reading and writing different file types such as Markdown, TOML, JSON, and YAML. It offers methods to read and write files, and it also handles caching to improve performance. It raises specific exceptions when there are errors in file operations.                                                                                                                                                                                                                                      |
-| [model.py](https://github.com/eli64s/readme-ai/blob/main/src/model.py)           | The provided code snippet is a handler for making requests to the OpenAI API to generate text for the README.md file. It includes functionality for converting code to natural language text and generating text using prompts. The code also handles rate limiting, caching, and error handling.                                                                                                                                                                                                                                                                                              |
-| [builder.py](https://github.com/eli64s/readme-ai/blob/main/src/builder.py)       | The code snippet builds a README Markdown file for a codebase. It creates different sections including badges, directory tree, modules, setup guide, and more. It uses information from the configuration file and generates Markdown tables from code summaries. It also retrieves and formats badges for project dependencies.                                                                                                                                                                                                                                                               |
-| [utils.py](https://github.com/eli64s/readme-ai/blob/main/src/utils.py)           | This code snippet provides utility methods for the README-AI tool. It includes functions for cloning and validating Git repositories, extracting username and repository name from GitHub URLs, adjusting maximum tokens for prompts, token counting, text truncation, file/url validation, list flattening, and text formatting.                                                                                                                                                                                                                                                              |
-| [parse.py](https://github.com/eli64s/readme-ai/blob/main/src/parse.py)           | The provided code snippet consists of a collection of methods that parse different file formats to extract dependencies. This includes files such as docker-compose.yaml, conda environment files, Pipfile, Pipfile.lock, pyproject.toml, requirements.txt, Cargo.toml, Cargo.lock, package.json, yarn.lock, package-lock.json, go.mod, build.gradle, pom.xml, CMakeLists.txt, configure.ac, and Makefile.am. The methods take the content of the files as input and return a list of dependencies extracted from the files. Each method handles the parsing logic for a specific file format. |
-| [main.py](https://github.com/eli64s/readme-ai/blob/main/src/main.py)             | This code snippet is the main entrypoint for the README-AI application. It takes command line arguments for the OpenAI API key, output file path, and repository URL or path. It validates the API key and repository, then it generates a README.md file by orchestrating the generation process using an OpenAI model. The generated README contains a code summary, slogan, overview, and features. Finally, it formats the text and builds the markdown file.                                                                                                                              |
+| Port 7 - Echo | *Protocol*: TCP/UDP. *Function*: Returns received data (echoes back). *Use*: Network testing. *Security*: Risky; often disabled or blocked due to potential exploits. |
+| Port 20 - File Transfer Protocol (FTP) | Protocol: TCP. Function: Transfers files (data channel). Use: File sharing. Security: Use with caution; encrypted alternatives recommended. |
+| Port 21 - File Transfer Protocol Control | Protocol: TCP. Function: Command channel for FTP. Use: File sharing control. Security: Use with caution; encrypted alternatives recommended. |
+| Port 22 - Secure Shell (SSH) | Protocol: TCP. Function: Secure remote login and command execution. Use: Secure system management. Security: Highly secure; ensure strong keys and passwords. |
+| Port 23 - Telnet | Protocol: TCP. Function: Remote login (plaintext). Use: Remote system management. Security: Risky; use SSH instead due to lack of encryption. |
+| Port 25 - Simple Mail Transfer Protocol (SMTP) | Protocol: TCP. Function: Email transmission. Use: Mail servers. Security: Vulnerable to spam and misuse; ensure proper configurations. |
+| Port 37 - Time | Protocol: TCP/UDP. Function: Provides system time. Use: Synchronizing system clocks. Security: Generally low risk; ensure only trusted sources are used. |
+| Port 53 - Domain Name System (DNS) | Protocol: TCP/UDP. Function: Translates domain names to IP addresses. Use: Web browsing, app connectivity. Security: Risk of DNS spoofing; use DNSSEC where possible. |
+| Port 69 - Trivial File Transfer Protocol (TFTP) | Protocol: UDP. Function: File transfers (simpler than FTP). Use: Often for network devices, firmware updates. Security: No authentication; use in secure environments only. |
+| Port 80 - Hyper Text Transfer Protocol (HTTP) | Protocol: TCP. Function: Transfers web pages. Use: Web browsing. Security: Unencrypted; HTTPS (Port 443) is more secure. |
+| Port 110 - Post Office Protocol 3 (POP3) | Protocol: TCP. Function: Retrieves email from a mail server. Use: Email clients. Security: Unencrypted; secure alternatives available (e.g., POP3S). |
+| Port 111 - Remote Procedure Calls (RPC) | Protocol: TCP/UDP. Function: Executes remote commands. Use: Distributed systems. Security: Vulnerable if not properly secured; risk of DDoS and unauthorized access. |
+| Port 123 - Network Time Protocol (NTP) | Protocol: UDP. Function: Synchronizes system clocks. Use: Clock synchronization. Security: Exploitable if misconfigured; use authenticated mode. |
+| Port 135 - Microsoft Remote Procedure Call (MSRPC) | Protocol: TCP. Function: Executes remote procedures. Use: Microsoft distributed applications. Security: Risky; should be firewalled in untrusted environments. |
+| Port 137 - Server Message Block (SMB) | Protocol: TCP/UDP. Function: Provides shared access to files, printers, etc. Use: File and printer sharing in Windows networks. Security: Vulnerable to various attacks; secure configurations and recent versions are essential. |
+| Port 139 - Server Message Block/NetBIOS Session Service (SMB/NetBIOS-SSN) | Protocol: TCP. Function: Facilitates file, printer, and other shared resource access. Use: Windows networking. Security: Risk of unauthorized access; should be firewalled in untrusted environments. |
+| Port 143 - Internet Message Access Protocol (IMAP) | Protocol: TCP. Function: Accesses email messages on a remote server. Use: Email clients. Security: Unencrypted; secure version IMAPS (Port 993) recommended. |
+| Port 161 - Simple Network Management Protocol (SNMP) | Protocol: UDP. Function: Monitors and manages network devices. Use: Network management. Security: Versions prior to SNMPv3 lack encryption and are insecure. |
+| Port 162 - Simple Network Management Protocol Trap (SNMP Trap) | Protocol: UDP. Function: Notification from network devices about specific conditions. Use: Network management. Security: Ensure filtering and proper configurations to avoid misuse. |
+| Port 389 - Lightweight Directory Access Protocol (LDAP) | Protocol: TCP. Function: Accesses and maintains directory services. Use: Directory operations. Security: Unencrypted; use LDAPS (Port 636) for secure connections. |
+| Port 443 - HTTP Secure (HTTPS) | Protocol: TCP. Function: Transfers encrypted web pages. Use: Secure web browsing. Security: Encrypted; ensure valid certificates for authenticity. |
+| Port 445 - Microsoft-DS (Directory Services) SMB/Active Directory | Protocol: TCP. Function: Access to shared resources like files and printers. Use: Windows networking and domain services. Security: Potential target for ransomware and other attacks; secure appropriately. |
+| Port 636 - Secure Lightweight Directory Access Protocol (SLDAP) | Protocol: TCP. Function: Accesses and maintains encrypted directory services. Use: Directory operations. Security: Encrypted; offers secure alternative to LDAP. |
+| Port 993 - Internet Message Access Protocol Secure (IMAPS) | Protocol: TCP. Function: Accesses email messages securely on a remote server. Use: Secure email clients. Security: Encrypted; preferred over IMAP. |
+| Port 995 - Post Office Protocol 3 Secure (POP3S) | Protocol: TCP. Function: Secure retrieval of email from a server. Use: Secure email clients. Security: Encrypted; preferred over POP3. |
+| Port 989 - FTP over TLS/SSL (FTPS data) | Protocol: TCP. Function: Encrypted data channel for FTP. Use: Secure file sharing. Security: Encrypted; safer than regular FTP. |
+| Port 990 - FTP over TLS/SSL (FTPS control) | Protocol: TCP. Function: Command channel for encrypted FTP. Use: Secure file sharing control. Security: Encrypted; safer than regular FTP. |
+| Port 1433 - Microsoft SQL Server | Protocol: TCP. Function: SQL Server database access. Use: Database operations. Security: Potential target for attacks; firewall and restrict access. |
+| Port 1434 - Microsoft SQL Server Browser Service | Protocol: UDP. Function: Provides info about SQL Server instances. Use: Database operations. Security: Limit exposure; can reveal sensitive info. |
+| Port 1723 - Point-to-Point Tunneling Protocol (PPTP) | Protocol: TCP. Function: VPN tunnel creation. Use: VPNs. Security: Vulnerabilities known; consider more secure VPN protocols. |
+| Port 1812 - RADIUS Authentication | Protocol: UDP. Function: Remote user authentication. Use: VPNs, networking. Security: Ensure secure configurations and strong encryption. |
+| Port 1813 - RADIUS Accounting | Protocol: UDP. Function: Tracks resources usage of remote users. Use: VPNs, networking. Security: Ensure data integrity and confidentiality. |
+| Port 3268 - Global Catalog Service | Protocol: TCP. Function: Directory service for AD domains. Use: Microsoft AD. Security: Ensure proper configurations for AD environment. |
+| Port 3269 - Secure Global Catalog Service | Protocol: TCP. Function: Directory service for AD domains over SSL. Use: Microsoft AD. Security: Encrypted; ensure valid certificates. |
+| Port 3389 - RDP/MS-WBT-server | Protocol: TCP/UDP. Function: Remote desktop access. Use: Remote system management. Security: High-risk; enable Network Level Authentication and restrict access. |
+| Port 5060 - SIP (Non-encrypted) | Protocol: TCP/UDP. Function: Initiates/modifies VoIP calls. Use: VoIP services. Security: Unencrypted; risks of eavesdropping. |
+| Port 5061 - SIP over TLS (Encrypted) | Protocol: TCP/UDP. Function: Secure VoIP call initiation. Use: Secure VoIP services. Security: Encrypted; preferred over non-encrypted SIP. |
+| Port 5190 - AOL | Protocol: TCP. Function: Online services and instant messaging. Use: Communication. Security: Ensure latest software versions; avoid untrusted content. |
+| Port 5631 - Symantec pcAnywhere (data) | Protocol: TCP. Function: Remote desktop data transfer. Use: Remote system access. Security: Ensure secure configurations and updates. |
+| Port 5632 - Symantec pcAnywhere (status) | Protocol: UDP. Function: Remote desktop status communication. Use: Remote system access. Security: Ensure secure configurations and updates. |
+| Port 5800 - VNC over HTTP | Protocol: TCP. Function: Web-based remote desktop access. Use: Remote system management. Security: Use strong passwords and consider tunneling over SSL. |
+| Port 5900 - VNC Standalone | Protocol: TCP. Function: Remote desktop access. Use: Remote system management. Security: Risky; use strong passwords and restrict access. |
+| Port 8080 - HTTP Proxy | Protocol: TCP. Function: Alternative port for web services. Use: Web applications, proxies. Security: Regularly monitor and restrict to known users. |
 
 </details>
 
@@ -126,17 +170,17 @@ The project README-AI is a tool that automatically generates high-level summarie
 
 Before you begin, ensure that you have the following prerequisites installed:
 
->  `ℹ️ Windows 10/11`
+>  ` Windows 10/11`
 
->  `ℹ️ Python`
+>  ` Python`
 
->  `ℹ️ Python Package Installer `
+>  ` Python Package Installer `
 
->  `ℹ️ Python library: curses `
+>  ` Python library: curses `
 
->  `ℹ️ Python library: tkinter `
+>  ` Python library: tkinter `
 
->  `ℹ️ Internet connection `
+>  ` Internet connection `
 
 ### 💻 Installation
 
@@ -173,12 +217,12 @@ python osfortify.py
 
 ## 🗺 Roadmap
 
-> - [X] `ℹ️  Task 1: Multiple bug fixes`
-> - [X] `ℹ️  Task 2: New features: tidy and colored output`
+> - [X] `  Task 1: Multiple bug fixes`
+> - [X] `  Task 2: New features: tidy and colored output`
 
-> - [ ] `ℹ️  Incoming feature 1: Exporting results to PDF file`
-> - [ ] `ℹ️  Incoming feature 2: New services: HDMI, Mini-Jack, DVI, CD-DVD, CTRL+ALT+DEL on login prompt, Trivial File Transfer Protocol (TFTP) `
-> - [ ] `ℹ️  Incoming feature 3: One button evaluation of security state (Risk analysis) `
+> - [ ] `  Incoming feature 1: Exporting results to PDF file`
+> - [ ] `  Incoming feature 2: New services: HDMI, Mini-Jack, DVI, CD-DVD, CTRL+ALT+DEL on login prompt, Trivial File Transfer Protocol (TFTP) `
+> - [ ] `  Incoming feature 3: One button evaluation of security state (Risk analysis) `
 
 
 ---
