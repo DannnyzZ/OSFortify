@@ -211,6 +211,7 @@ python --version && pip --version
 ```sh
 python osfortify.py
 ```
+3. WARNING! Make sure You provide the correct location of OSFortify.
 
 ---
 
