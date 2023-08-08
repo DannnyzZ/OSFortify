@@ -55,6 +55,8 @@ OSFortify is a sophisticated terminal-based utility designed to enhance system s
 
 The primary **purpose** of OSFortify is to provide an advanced yet accessible tool for users to bolster their system's security posture, elevate operating system hardening, and seamlessly administer critical system functions. By enabling users to interact with their system through a curated selection of options, OSFortify bridges the gap between cybersecurity and user experience.
 
+OSFortify brings robust control to your system's **services, features, and ports**. It allows real-time status checks, seamless activation or deactivation during boot, and dynamic adjustments on-the-fly. With OSFortify, you can finely manage your system's components, optimize resources, and bolster security.
+
 
 ---
 
@@ -228,10 +230,22 @@ python C:\Users\Danny\Desktop\osfortify.py
 
 
 ### ⚠️ Warning
-1. Notes
-2. ds
-3. dsds
-4. 
+
+**Using OSFortify Safely:**
+
+1. Knowledge is Key: Understand changes' impact on security and stability.
+
+2. Caution and Expertise: Modify with care, avoid vulnerabilities or data loss.
+
+3. Backup Always: Prioritize system backups to ensure recovery options.
+
+4. Authorized Access: Limit OSFortify access to knowledgeable personnel.
+
+5. Controlled Testing: Experiment in safe environments before implementing changes.
+
+6. Secure Scripts: Verify PowerShell scripts before execution.
+
+**Use OSFortify wisely to enhance security while minimizing risks.**
 
 ## 🗺 Roadmap
 
