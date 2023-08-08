@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/Batch-Script-4EAA25.svg?style=flat&logo=Windows%20Terminal&logoColor=white" alt="Batch Script" />
   <img src="https://img.shields.io/badge/OpenAI-412991.svg?style&logo=OpenAI&logoColor=white" alt="OpenAI" />
   <img src="https://img.shields.io/badge/Python-3776AB.svg?style&logo=Python&logoColor=white" alt="Python" />
-  <img src="https://img.shields.io/badge/GitHub-Profile-181717.svg?style=flat&logo=GitHub&logoColor=white" alt="GitHub" />
+  <img src="https://img.shields.io/badge/GitHub-007ACC.svg?style=flat&logo=GitHub&logoColor=white" alt="GitHub" />
   <img src="https://img.shields.io/badge/OS%20Hardening-FFA500.svg" alt="OS%20Hardening" />
   <img src="https://img.shields.io/badge/Markdown-000000.svg?style&logo=Markdown&logoColor=white" alt="Markdown" />
   <img src="https://img.shields.io/badge/JSON-000000.svg?style&logo=JSON&logoColor=white" alt="JSON" />
