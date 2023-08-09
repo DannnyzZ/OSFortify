@@ -17,7 +17,10 @@ Welcome to OSFortify v1.6.0, a terminal-based interface to manage system service
 OSFortify v1.6.0 is a command-line tool developed by DannnyzZ for managing system services, features, and ports. This software offers a comprehensive interface for efficient task execution.
 
 ## 2. Getting Started
-To launch OSFortify v1.6.0, execute the Python script in a terminal. The software will present an intuitive interface. Launch it with: `python osfortify.py`
+To launch OSFortify v1.6.0, execute the Python script in a terminal. The software will present an intuitive interface. Launch it with: 
+```sh
+python osfortify.py
+```
 
 ## 3. Navigation and Tickmarking
 - Use UP/DOWN arrow keys to navigate.
