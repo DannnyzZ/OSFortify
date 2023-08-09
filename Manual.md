@@ -1,5 +1,16 @@
 # OSFortify v1.6.0 User Guide
- 
+
+```sh
+  .oooooo.    .oooooo..o oooooooooooo                        .    o8o   .o88o.             
+ d8P'  `Y8b  d8P'    `Y8 `888'     `8                      .o8    `"'   888 `"             
+888      888 Y88bo.       888          .ooooo.  oooo d8b .o888oo oooo  o888oo  oooo    ooo 
+888      888  `"Y8888o.   888oooo8    d88' `88b `888""8P   888   `888   888     `88.  .8'  
+888      888      `"Y88b  888    "    888   888  888       888    888   888      `88..8'   
+`88b    d88' oo     .d8P  888         888   888  888       888 .  888   888       `888'    
+ `Y8bood8P'  8""88888P'  o888o        `Y8bod8P' d888b      "888" o888o o888o       .8'     
+                                                                               .o..P'      
+                                                                               `Y8P'                                          
+```
 Welcome to OSFortify v1.6.0, a terminal-based interface to manage system services, features, and ports. This guide provides an overview of the software's functionalities and usage.
 
 ## Table of Contents
