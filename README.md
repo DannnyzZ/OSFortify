@@ -218,7 +218,11 @@ python --version && pip --version
 ### 🎮 Using OSFortify
 
 1. Run Powershell as administrator.
-2. Execute:
+2. Download osfortify.py:
+```sh
+https://github.com/DannnyzZ/OSFortify/blob/main/osfortify
+```
+4. Execute:
 ```sh
 python osfortify.py
 ```
