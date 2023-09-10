@@ -135,4 +135,3 @@ OSFortify v1.6.0 allows you to manage various services, features, and ports on y
 ## 9. Conclusion
 OSFortify v1.6.0 offers an advanced, text-based interface for managing system services, features, and ports. Thank you for using OSFortify v1.6.0!
 
-Feel free to adapt and modify the user guide as needed. This version includes the complete list of services, features, and ports while keeping the guide concise and informative.
