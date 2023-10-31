@@ -263,6 +263,10 @@ python C:\Users\Danny\Desktop\osfortify.py
 > - [ ] ` Incoming feature 1: Exporting results to PDF file`
 > - [ ] ` Incoming feature 2: New services: HDMI, Mini-Jack, DVI, CD-DVD, CTRL+ALT+DEL on login prompt, Trivial File Transfer Protocol`
 > - [ ] ` Incoming feature 3: One button evaluation of security state (Risk analysis)`
+> - [ ] ` Incoming *BIG* feature 4: Network analysis: netstat, routing, DNS informations, local hosts, IPv4/IPv6 of device, Gateway, Netmask and many more!`
+>
+> - [ ] ` Future Update 1: Moving scripts to libraries, improving by that modularity and variety of features`
+> - [ ] ` Proof of Concept: IT Auditing via SSH`
 
 
 ---
