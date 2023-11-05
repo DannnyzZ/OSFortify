@@ -19,7 +19,6 @@
 </p>
 
 
-![GitHub license](https://img.shields.io/github/license/eli64s/readme-ai?style&color=5D6D7E)
 ![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-4429-25A9E0.svg?style=flat)
 ![Code Size](https://img.shields.io/badge/Code%20Size-185%20KB-25A9E0.svg?style=flat)
 </div>
@@ -296,7 +295,7 @@ The project maintainers will review your changes and provide feedback or merge t
 
 ## 📄 License
 
-This project is licensed under the `ℹ️  MIT` License. 
+Non-Commercial Use ONLY.
 
 ---
 
