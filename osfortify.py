@@ -1,6 +1,6 @@
 
       ################################
-      # OSFortify v1.7.0 by DannnyzZ #
+      # OSFortify v1.7.0 by DannnyzZ ##
       ################################
 
 import os
