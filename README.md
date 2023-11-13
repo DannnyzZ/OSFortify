@@ -40,6 +40,7 @@
 - [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
 - [👏 Acknowledgments](#-acknowledgments)
+- [🗃️ Changelog](#-changelog)
 
 
 ---
@@ -258,12 +259,13 @@ python C:\Users\Danny\Desktop\osfortify.py
 
 > - [X] ` Task 1: Multiple bug fixes`
 > - [X] ` Task 2: New features: tidy and colored output`
+> - [X] ` *BIG* feature 4: Network analysis: netstat, routing, DNS informations, local hosts, IPv4/IPv6 of device, Gateway, Netmask and many more!`
 
 > - [ ] ` Incoming feature 1: Exporting results to PDF file`
 > - [ ] ` Incoming feature 2: New services: HDMI, Mini-Jack, DVI, CD-DVD, CTRL+ALT+DEL on login prompt, Trivial File Transfer Protocol`
 > - [ ] ` Incoming feature 3: One button evaluation of security state (Risk analysis)`
-> - [ ] ` Incoming *BIG* feature 4: Network analysis: netstat, routing, DNS informations, local hosts, IPv4/IPv6 of device, Gateway, Netmask and many more!`
->
+> - [ ] ` Incoming feature 4: More MS services: bitsadmin, curl`
+
 > - [ ] ` Future Update 1: Moving scripts to libraries, improving by that modularity and variety of features`
 > - [ ] ` Proof of Concept: IT Auditing via SSH`
 
@@ -312,4 +314,21 @@ Non-Commercial Use ONLY.
   `ℹ️  Logo.com https://patorjk.com/software/taag`
   
 
+---
+
+## 🗃️ Changelog
+
+OSFortify 1.7
+- New section of objects: "Network"
+  - Route: Displays the local routing table on the system.
+  - Ping: Sends 20 ICMP echo requests to google.com and measures the round-trip time.
+  - ARP: Shows the ARP (Address Resolution Protocol) cache, displaying the mapping of IP addresses to MAC addresses on the local network.
+  - DNS: Retrieves unique DNS server addresses for both IPv4 and IPv6, then displays them separately.
+  - Traceroute: Traces the route that packets take to reach the specified destination (google.com in this case).
+  - Routing Table: Provides information about the system's routing table, including destination networks, gateway addresses, and interface indexes.
+  - Ipconfig: Extracts information about network adapters, media state, connection-specific DNS suffix, link-local and autoconfigured IPv6 addresses, subnet masks, default gateways, IPv4 addresses, etc.
+  - Netstat: Displays active network connections and listening ports, along with the processes using them.
+  - Autonomous System Numbers: Retrieves and displays information about the Autonomous System Number (ASN) for a given IP address using the ip-api.com service. Displays IP address, ASN, and AS Name if available.
+  - Netstat: Displays active network connections and listening ports, along with the processes using them.
+ 
 ---
