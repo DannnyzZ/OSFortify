@@ -35,7 +35,7 @@
   - [✔️ Prerequisites](#️-prerequisites)
   - [💻 Installation](#-installation)
   - [🎮 Using OSFortify](#-using-OSFortify)
-  - [⚠️ Warning](#-Warning)
+  - [⚠️ Warning](#%EF%B8%8F-warning)
 - [🗺 Roadmap](#-roadmap)
 - [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
