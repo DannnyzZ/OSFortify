@@ -197,7 +197,7 @@ Before you begin, ensure that you have the following prerequisites installed:
 1. Install python
 ```sh
 1.	Visit the official Python website: https://www.python.org/downloads/release/python-3117/
-2.	Go to the Downloads section and choose the version of Python you want to install (e.g., Python 3.11.7).
+2.	Go to the Downloads section and download Python 3.11.7.
 * WARNING - due to problems with curses library, OSFortify works only with Python 3.11.7. *
 3.	Scroll down to the bottom of the page and select the installer that matches your system architecture (32-bit or 64-bit).
 4.	Run the downloaded installer.
