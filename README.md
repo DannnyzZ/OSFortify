@@ -315,13 +315,13 @@ Secondary modules (Event Viewer, GPO):
 > - [X] ` Task 2: New features: tidy and colored output`
 > - [X] ` Task 3: *BIG* feature 4: Network analysis: netstat, routing, DNS informations, local hosts, IPv4/IPv6 of device, Gateway, Netmask and many more!`
 > - [X] ` Task 4: New features and services: PowerShell, Command prompt, User Account Control, Autorun!`
-> - [ ] ` Task 5: Module - Event Viewer support`
-> - [ ] ` Task 6: Module - Security Baseline GPO`
+> - [X] ` Task 5: Module - Event Viewer support`
+> - [X] ` Task 6: Module - Security Baseline GPO`
 
 > - [ ] ` Incoming feature 1: Exporting results to PDF file`
 > - [ ] ` Incoming feature 2: New services: HDMI, Mini-Jack, DVI, CD-DVD, CTRL+ALT+DEL on login prompt, Trivial File Transfer Protocol`
-> - [ ] ` Incoming feature 3: One button evaluation of security state (Risk analysis)
-> - [ ] ` Incoming feature 4: Improving istallaton process.
+> - [ ] ` Incoming feature 3: One button evaluation of security state (Risk analysis)`
+> - [ ] ` Incoming feature 4: Improving istallaton process.`
 
 > - [ ] ` Future Update 1: Moving scripts to libraries, improving by that modularity and variety of features`
 > - [ ] ` Proof of Concept: IT Auditing via SSH`
