@@ -373,7 +373,7 @@ Non-Commercial Use ONLY.
 
   `ℹ️  Logo.com https://patorjk.com/software/taag`
 
-  `ℹ️ Microsoft Security Compliance Toolkit 1.0 https://www.microsoft.com/en-us/download/details.aspx?id=55319`
+  `ℹ️  Microsoft Security Compliance Toolkit 1.0 https://www.microsoft.com/en-us/download/details.aspx?id=55319`
 
 ---
 
