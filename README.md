@@ -190,7 +190,11 @@ OSFortify encompasses an extensive list of important ports, such as SSH (Port 22
 
 | Security Baseline Field                                                                     | Details                                                                                                                                                                                                                                               |
 | ---                                                                      | ---                                                                                                                                                                                                                                                   |
-| PowerShell | Protocol: N/A. Function: Powerful command-line shell and scripting language. Use: System administration, automation, scripting. Security: High privileges; monitor usage and restrict access to trusted users. |
+
+| Audit Policy | Protocol: N/A. Function: Settings that determine which types of security events are recorded in the security log of a Windows system. Use: Governing the auditing of various activities such as logon events, file access, account management, and system events. Security: Essential for monitoring and maintaining system security; configure carefully to balance security needs with performance impact. |
+| HKCU | Protocol: N/A. Function: HKEY_CURRENT_USER registry hive containing configuration settings for the currently logged-in user on a Windows system. Use: Storing user-specific settings such as desktop preferences, application settings, and environment variables. Security: Contains sensitive user information; protect from unauthorized access or modification. |
+| HKLM | Protocol: N/A. Function: HKEY_LOCAL_MACHINE registry hive containing configuration settings for the local computer. Use: Storing system-wide settings such as hardware configuration, installed software information, and security policies. Security: Critical for system operation; restrict access to trusted administrators to prevent unauthorized changes. |
+| Security Template | Protocol: N/A. Function: Predefined set of security configurations and policies for Windows systems to enforce security standards. Use: Applying settings related to user rights, password policies, audit policies, and other security configurations. Security: Ensures consistent security posture across systems; protect templates from unauthorized modification to maintain security integrity. |
 
 </details>
 
