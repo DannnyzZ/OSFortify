@@ -197,6 +197,7 @@ OSFortify encompasses an extensive list of important ports, such as SSH (Port 22
 
 </details>
 
+> ` Full list of policies and comparison with default Windows 10 state, Microsoft Security Compliance Toolkit v 1.0 resides in MS Excel file: Default vs Microsoft Compliance Toolkit vs OSFortify - GPO POLICIES.xlsx
 
 ---
 
