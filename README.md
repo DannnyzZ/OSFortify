@@ -71,17 +71,12 @@ OSFortify brings robust control to your system's **services, features, and ports
 | **📕 Comprehensive Security Baseline** | The software goes beyond the standard Microsoft Security Baseline Toolkit v. 1.0, actively modifying 952 Microsoft GPO policies to provide enhanced security measures. This translates to a significant increase of 635 more policies compared to the Microsoft baseline. |
 | **🔗 Comprehensive Functionality** | OSFortify encompasses a diverse array of essential services, features, and ports, collectively enhancing system security, hardening, and administration. These elements form a critical foundation for a robust and secure computing environment, fortifying against potential threats and vulnerabilities. |
 
-- *Services and Features*
-OSFortify encompasses a comprehensive range of essential services and features, including guest user account management, FTP control, oversight of Windows Media Player, and management of USB ports. These functionalities contribute significantly to system security by offering control over potential entry points, data transfers, and media-related threats.
-
-- *Ports*
-OSFortify encompasses an extensive list of important ports, such as SSH (Port 22), HTTPS (Port 443), RDP (Port 3389), and many more. These ports serve as critical communication channels, and their proper management through OSFortify enhances cybersecurity by preventing unauthorized access, securing data transfers, and protecting against potential exploits.
-- OSFortify leverages LGPO via API to seamlessly implement and manage GPO policies, ensuring efficient and reliable policy enforcement.
-- Backup and Restore: OSFortify provides the capability to backup and restore GPO configurations, giving you peace of mind knowing that your policies are securely stored and easily recoverable in case of emergencies.
-
 ---
 
 ## 🧩 Modules
+
+*Services and Features*
+OSFortify encompasses a comprehensive range of essential services and features, including guest user account management, FTP control, oversight of Windows Media Player, and management of USB ports. These functionalities contribute significantly to system security by offering control over potential entry points, data transfers, and media-related threats.
 
 <details closed><summary>Services</summary>
 
@@ -111,7 +106,7 @@ OSFortify encompasses an extensive list of important ports, such as SSH (Port 22
 
 </details>
 
-- *Windows Features*
+*Windows Features*
 The program covers an array of critical Windows features, including Windows Defender, Windows Firewall, Windows Update, remote management functionalities, and more. By providing control over these features, OSFortify enhances cybersecurity by allowing administrators to fortify defenses, manage remote access, and stay updated against known vulnerabilities.
 
 <details closed><summary>Features</summary>
@@ -128,6 +123,9 @@ The program covers an array of critical Windows features, including Windows Defe
 | PowerShell | Protocol: N/A. Function: Powerful command-line shell and scripting language. Use: System administration, automation, scripting. Security: High privileges; monitor usage and restrict access to trusted users. |
 
 </details>
+
+*Ports*
+OSFortify encompasses an extensive list of important ports, such as SSH (Port 22), HTTPS (Port 443), RDP (Port 3389), and many more. These ports serve as critical communication channels, and their proper management through OSFortify enhances cybersecurity by preventing unauthorized access, securing data transfers, and protecting against potential exploits.
 
 <details closed><summary>Ports</summary>
 
@@ -193,6 +191,8 @@ The program covers an array of critical Windows features, including Windows Defe
 
 </details>
 
+OSFortify leverages LGPO via API to seamlessly implement and manage GPO policies, ensuring efficient and reliable policy enforcement. It also provides the capability to backup and restore GPO configurations, giving you peace of mind knowing that your policies are securely stored and easily recoverable in case of emergencies.
+  
 <details closed><summary>Security Baseline Module</summary>
 
 | Security Baseline Category | Details |
