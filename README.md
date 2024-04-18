@@ -21,7 +21,7 @@
 
 
 ![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-4825-25A9E0.svg?style=flat)
-![Code Size](https://img.shields.io/badge/Code%20Size-185%20KB-25A9E0.svg?style=flat)
+![Code Size](https://img.shields.io/badge/Code%20Size-0.5%20MB-25A9E0.svg?style=flat)
 </div>
 
 ---
