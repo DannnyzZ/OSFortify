@@ -73,8 +73,7 @@ OSFortify brings robust control to your system's **services, features, and ports
 
 - *Services and Features*
 OSFortify encompasses a comprehensive range of essential services and features, including guest user account management, FTP control, oversight of Windows Media Player, and management of USB ports. These functionalities contribute significantly to system security by offering control over potential entry points, data transfers, and media-related threats.
-- *Windows Features*
-The program covers an array of critical Windows features, including Windows Defender, Windows Firewall, Windows Update, remote management functionalities, and more. By providing control over these features, OSFortify enhances cybersecurity by allowing administrators to fortify defenses, manage remote access, and stay updated against known vulnerabilities.
+
 - *Ports*
 OSFortify encompasses an extensive list of important ports, such as SSH (Port 22), HTTPS (Port 443), RDP (Port 3389), and many more. These ports serve as critical communication channels, and their proper management through OSFortify enhances cybersecurity by preventing unauthorized access, securing data transfers, and protecting against potential exploits.
 - OSFortify leverages LGPO via API to seamlessly implement and manage GPO policies, ensuring efficient and reliable policy enforcement.
@@ -111,6 +110,9 @@ OSFortify encompasses an extensive list of important ports, such as SSH (Port 22
 | Telnet | Protocol: TCP. Function: Remote command-line access. Use: Remote system administration. Security: Unencrypted; use SSH as a more secure alternative. |
 
 </details>
+
+- *Windows Features*
+The program covers an array of critical Windows features, including Windows Defender, Windows Firewall, Windows Update, remote management functionalities, and more. By providing control over these features, OSFortify enhances cybersecurity by allowing administrators to fortify defenses, manage remote access, and stay updated against known vulnerabilities.
 
 <details closed><summary>Features</summary>
 
