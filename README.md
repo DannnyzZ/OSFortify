@@ -223,11 +223,19 @@ python --version && pip --version
 ```sh
 https://github.com/DannnyzZ/OSFortify/blob/main/osfortify
 ```
-4. Execute:
+3. Download OSFortify additional modules and extract the archive to path:
+```sh
+C:\Users
+```
+The full path containing additional modules should look like this:
+```sh
+C:\Users\OSFortify
+```
+4. Launch software from the PowerShell console:
 ```sh
 python osfortify.py
 ```
-3. WARNING! Make sure You provide the correct location of OSFortify.
+. WARNING! Make sure You provide the correct location of OSFortify.
 4. Example of use:
 ```sh
 python C:\Users\Danny\Desktop\osfortify.py
