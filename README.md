@@ -205,38 +205,40 @@ Before you begin, ensure that you have the following prerequisites installed:
 6.	Make sure that in optional features you choose pip to be installed.
 7.	Complete the installation by following the on-screen instructions.
 ```
-
 2. Install dependencies
 ```sh
 pip install tk windows-curses
 ```
-
 3. Check version of python and pip:
 ```sh
 python --version && pip --version
 ```
-
-### 🎮 Using OSFortify
-
-1. Run Powershell as administrator.
-2. Download osfortify.py from this link:
+4. Download osfortify.py from this link:
 ```sh
 https://github.com/DannnyzZ/OSFortify/blob/main/osfortify
 ```
-3. Download OSFortify additional modules and extract the archive to path:
+5. Download OSFortify additional modules and extract the archive to path:
 ```sh
 C:\Users
 ```
+
 The full path containing additional modules should look like this:
 ```sh
 C:\Users\OSFortify
 ```
-4. Launch software from the PowerShell console:
+
+
+### 🎮 Using OSFortify
+
+
+1. Launch OSFortify from the PowerShell console:
 ```sh
 python osfortify.py
 ```
-. WARNING! Make sure You provide the correct location of OSFortify.
-4. Example of use:
+
+*WARNING! Make sure You provide the correct location of OSFortify.*
+
+Example of use:
 ```sh
 python C:\Users\Danny\Desktop\osfortify.py
 ```
