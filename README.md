@@ -217,7 +217,7 @@ python --version && pip --version
 ```sh
 https://github.com/DannnyzZ/OSFortify/blob/main/osfortify
 ```
-5. Download OSFortify additional modules and extract the archive to path:
+5. Download OSFortify additional modules (OSFortify_modules.rar) and extract the archive to path:
 ```sh
 C:\Users
 ```
