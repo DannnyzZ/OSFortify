@@ -76,9 +76,9 @@ OSFortify encompasses a comprehensive range of essential services and features, 
 - *Windows Features*
 The program covers an array of critical Windows features, including Windows Defender, Windows Firewall, Windows Update, remote management functionalities, and more. By providing control over these features, OSFortify enhances cybersecurity by allowing administrators to fortify defenses, manage remote access, and stay updated against known vulnerabilities.
 - *Ports*
-OSFortify encompasses an extensive list of important ports, such as SSH (Port 22), HTTPS (Port 443), RDP (Port 3389), and many more. These ports serve as critical communication channels, and their proper management through OSFortify enhances cybersecurity by preventing unauthorized access, securing data transfers, and protecting against potential exploits. |
+OSFortify encompasses an extensive list of important ports, such as SSH (Port 22), HTTPS (Port 443), RDP (Port 3389), and many more. These ports serve as critical communication channels, and their proper management through OSFortify enhances cybersecurity by preventing unauthorized access, securing data transfers, and protecting against potential exploits.
 - OSFortify leverages LGPO via API to seamlessly implement and manage GPO policies, ensuring efficient and reliable policy enforcement.
-- Backup and Restore: OSFortify provides the capability to backup and restore GPO configurations, giving you peace of mind knowing that your policies are securely stored and easily recoverable in case of emergencies. |
+- Backup and Restore: OSFortify provides the capability to backup and restore GPO configurations, giving you peace of mind knowing that your policies are securely stored and easily recoverable in case of emergencies.
 
 ---
 
