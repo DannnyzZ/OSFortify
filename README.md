@@ -195,9 +195,9 @@ OSFortify encompasses an extensive list of important ports, such as SSH (Port 22
 | HKLM | Protocol: N/A. Function: HKEY_LOCAL_MACHINE registry hive containing configuration settings for the local computer. Use: Storing system-wide settings such as hardware configuration, installed software information, and security policies. Security: Critical for system operation; restrict access to trusted administrators to prevent unauthorized changes. |
 | Security Template | Protocol: N/A. Function: Predefined set of security configurations and policies for Windows systems to enforce security standards. Use: Applying settings related to user rights, password policies, audit policies, and other security configurations. Security: Ensures consistent security posture across systems; protect templates from unauthorized modification to maintain security integrity. |
 
-</details>
+> Full list of policies and comparison with default Windows 10 state, Microsoft Security Compliance Toolkit v 1.0 resides in MS Excel file: Default vs Microsoft Compliance Toolkit vs OSFortify - GPO POLICIES.xlsx
 
-> ` Full list of policies and comparison with default Windows 10 state, Microsoft Security Compliance Toolkit v 1.0 resides in MS Excel file: Default vs Microsoft Compliance Toolkit vs OSFortify - GPO POLICIES.xlsx
+</details>
 
 ---
 
