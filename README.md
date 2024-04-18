@@ -16,6 +16,7 @@
   <img src="https://img.shields.io/badge/OS%20Hardening-FFA500.svg" alt="OS%20Hardening" />
   <img src="https://img.shields.io/badge/Markdown-000000.svg?style&logo=Markdown&logoColor=white" alt="Markdown" />
   <img src="https://img.shields.io/badge/JSON-000000.svg?style&logo=JSON&logoColor=white" alt="JSON" />
+  <img src="https://img.shields.io/badge/GPO%20%26%20Security%20Baseline-blue.svg?style=flat&logo=Security%20Shield&logoColor=white" alt="GPO Security Baseline" />
 </p>
 
 
