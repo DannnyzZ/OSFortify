@@ -80,8 +80,8 @@ OSFortify encompasses an extensive list of important ports, such as SSH (Port 22
 
 <details closed><summary>Services</summary>
 
-| Service                                                                   | Details                                                                                                                                                                                                            |
-| ---                                                                    | ---                                                                                                                                                                                                                |
+| Service | Details |
+| --- | --- |
 | Windows Defender | Protocol: N/A. Function: Antivirus and antimalware tool. Use: System protection. Security: Reliable; ensure regular updates for best protection. |
 | Windows Firewall | Protocol: N/A. Function: Filters incoming/outgoing network traffic. Use: Network security. Security: Essential for system protection; configure rules appropriately. |
 | Windows Update | Protocol: N/A. Function: Provides system and software updates. Use: System maintenance. Security: Critical for patching vulnerabilities; keep automatic updates on. |
@@ -108,8 +108,8 @@ OSFortify encompasses an extensive list of important ports, such as SSH (Port 22
 
 <details closed><summary>Features</summary>
 
-| Feature                                                                     | Details                                                                                                                                                                                                                                               |
-| ---                                                                      | ---                                                                                                                                                                                                                                                   |
+| Feature | Details |
+| --- | --- |
 | Guest user account | Protocol: N/A. Function: Provides limited access to a system without a personalized login. Use: Temporary or restricted access. Security: Risky; can be exploited if not properly restricted. |
 | File Transfer Protocol (FTP) | Protocol: TCP. Function: Protocol for transferring files over a network. Use: File sharing and download/upload. Security: Unencrypted; use FTPS or SFTP for secure transfers. |
 | Windows Media Player | Protocol: N/A. Function: Media player for viewing/hearing media files. Use: Multimedia playback. Security: Vulnerabilities may arise from codecs/plugins; ensure updates. |
@@ -123,8 +123,8 @@ OSFortify encompasses an extensive list of important ports, such as SSH (Port 22
 
 <details closed><summary>Ports</summary>
 
-| Port                                                                               | Details                                                                                                                                                                                                                                                                                                           |
-| ---                                                                                | ---                                                                                                                                                                                                                                                                                                                     |
+| Port | Details |
+| --- | --- |
 | Port 7 - Echo | *Protocol*: TCP/UDP. *Function*: Returns received data (echoes back). *Use*: Network testing. *Security*: Risky; often disabled or blocked due to potential exploits. |
 | Port 20 - File Transfer Protocol (FTP) | Protocol: TCP. Function: Transfers files (data channel). Use: File sharing. Security: Use with caution; encrypted alternatives recommended. |
 | Port 21 - File Transfer Protocol Control | Protocol: TCP. Function: Command channel for FTP. Use: File sharing control. Security: Use with caution; encrypted alternatives recommended. |
@@ -185,7 +185,6 @@ OSFortify encompasses an extensive list of important ports, such as SSH (Port 22
 
 </details>
 
-
 <details closed><summary>Security Baseline Module</summary>
 
 | Security Baseline Category | Details |
@@ -195,7 +194,7 @@ OSFortify encompasses an extensive list of important ports, such as SSH (Port 22
 | HKLM | Protocol: N/A. Function: HKEY_LOCAL_MACHINE registry hive containing configuration settings for the local computer. Use: Storing system-wide settings such as hardware configuration, installed software information, and security policies. Security: Critical for system operation; restrict access to trusted administrators to prevent unauthorized changes. |
 | Security Template | Protocol: N/A. Function: Predefined set of security configurations and policies for Windows systems to enforce security standards. Use: Applying settings related to user rights, password policies, audit policies, and other security configurations. Security: Ensures consistent security posture across systems; protect templates from unauthorized modification to maintain security integrity. |
 
-> Full list of policies and comparison with default Windows 10 state, Microsoft Security Compliance Toolkit v 1.0 resides in MS Excel file: Default vs Microsoft Compliance Toolkit vs OSFortify - GPO POLICIES.xlsx
+> The comprehensive list of policies, along with a comparison to the default state of Windows 10 and the configurations provided by the Microsoft Security Compliance Toolkit version 1.0, is contained within an MS Excel file titled "Default vs Microsoft Compliance Toolkit vs OSFortify - GPO POLICIES.xlsx".
 
 </details>
 
