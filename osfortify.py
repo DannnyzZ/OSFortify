@@ -1,7 +1,24 @@
 
       ################################
-      # OSFortify v1.7.0 by DannnyzZ ##
+      # OSFortify v2.0 by DannnyzZ ##
       ################################
+
+# V2.0 
+# - Added software inventory
+# Autorun
+# Powershell security
+# Terminal security
+# Added checking for update in not windows related software
+# Added GPO module
+# Added Event Viewer & logging module
+# Added UAC hardening
+# Added Terminal hardening
+
+# Add managing services:
+# Powershell
+
+
+# BLOCK PORT
 
 import os
 import subprocess
@@ -11,6 +28,7 @@ import sys
 import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
+import subprocess
 
 # FUNCTION - CONSOLE WINDOW SETTINGS
 hwnd = ctypes.windll.kernel32.GetConsoleWindow()
@@ -696,6 +714,128 @@ objects2 = [
     },
     {
         "group": "Features/Network",
+        "name": "Autorun",
+        "tickmark": False,
+        "values": [
+            '''
+            try {
+                Write-Output "`n_________________________________________________________________________________________________________"
+                Write-Host "|   Autorun   |" -ForegroundColor Cyan
+                Write-Host " "
+                # Check autorun state
+                $regKey = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer"
+                $regValueName = "NoDriveTypeAutorun"
+
+                if (Test-Path $regKey) {
+                    $noDriveTypeAutorun = (Get-ItemProperty -Path $regKey -Name $regValueName -ErrorAction SilentlyContinue).$regValueName
+                    if ($noDriveTypeAutorun -eq 255) {
+                        Write-Host "      Autorun is disabled."
+                    } elseif ($noDriveTypeAutorun -eq 145) {
+                        Write-Host "      Autorun is enabled."
+                    } else {
+                        Write-Host "      Unknown autorun state."
+                    }
+                } else {
+                    Write-Host "      Autorun settings not found."
+                }
+            } catch {
+                Write-Host "      An error occurred: $_"
+            }
+            ''',
+            ''' Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "NoDriveTypeAutorun" -Value 145 -Type DWord ''',
+            ''' Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "NoDriveTypeAutorun" -Value 255 -Type DWord ''',
+            ";",
+            ";",
+        ]
+    },
+    {
+        "group": "Features/Network",
+        "name": "Terminal",
+        "tickmark": False,
+        "values": [
+            '''
+                try {
+                Write-Output "`n_________________________________________________________________________________________________________"
+                Write-Host "|   Terminal   |" -ForegroundColor Cyan
+                Write-Host " "
+                # Check if Command Prompt is running with administrative privileges
+                $isAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
+
+                # Check if Command Prompt execution policy is restricted
+                $executionPolicy = Get-ExecutionPolicy
+
+                # Check if Command Prompt usage is restricted via Group Policy
+                $regKey = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"
+                $regValueName = "DisableCMD"
+
+                if (Test-Path $regKey) {
+                    $disableCmd = (Get-ItemProperty -Path $regKey -Name $regValueName -ErrorAction SilentlyContinue).$regValueName
+                    if ($disableCmd -eq 1) {
+                    $groupPolicyRestriction = "     Command Prompt usage is restricted via Group Policy"
+                    } else {
+                    $groupPolicyRestriction = "      Command Prompt usage is not restricted via Group Policy"
+                    }
+                } else {
+                    $groupPolicyRestriction = "      No Group Policy restriction found for Command Prompt usage"
+                }
+
+                # Output the results
+                Write-Host "      Command Prompt Running with Administrative Privileges: $isAdmin"
+                Write-Host "      Command Prompt Execution Policy: $executionPolicy"
+                Write-Host $groupPolicyRestriction
+                }
+                catch {
+                Write-Host "An error occurred: $_" -ForegroundColor Red
+                }
+            ''',
+            ''' 
+                Remove the item property
+                Remove-ItemProperty -Path 'HKCU:\Software\Policies\Microsoft\Windows\System' -Name DisableCMD
+            ''',
+            ''',
+                # Create the registry path if it doesn't exist
+                New-Item -Path 'HKCU:\Software\Policies\Microsoft\Windows\System' -Force
+                # Disable Command Prompt
+                Set-ItemProperty -Path 'HKCU:\Software\Policies\Microsoft\Windows\System' -Name DisableCMD -Value 1
+            ''',
+            ";",
+            ";",
+        ]
+    },
+    {
+        "group": "Features/Network",
+        "name": "Event Viewer",
+        "tickmark": False,
+        "values": [
+            '''
+                try {
+                Write-Output "`n_________________________________________________________________________________________________________"
+                Write-Host "|   Event Viewer   |" -ForegroundColor Cyan
+                try {
+                    $serviceStatus = Get-Service -Name 'EventLog' | Select-Object -Property Name, Status, StartType
+                    $formattedStatus = $serviceStatus | ForEach-Object {
+                    $formattedName = "`n      Name: " + $_.Name
+                    $formattedStatus = "      Status: " + $_.Status
+                    $formattedStartType = "      StartType: " + $_.StartType
+                    $formattedInfo = $formattedName, $formattedStatus, $formattedStartType -join "`n"
+                    $formattedInfo
+                    }
+                    Write-Output $formattedStatus.TrimEnd()
+                } catch {
+                    Write-Output "      Error: Unable to retrieve service information."
+                }
+                } catch {
+                Write-Output "      Error: An error occurred while accessing Event Viewer."
+                }
+            ''',
+            ''' try { Set-Service -Name 'EventLog' -StartupType Automatic } catch { Write-Output '      Error: Unable to set startup type to Automatic.' } ''',
+            ''' try { Set-Service -Name 'EventLog' -StartupType Disabled } catch { Write-Output '      Error: Unable to set startup type to Disabled.' } ''',
+            ''' try { Start-Service -Name 'EventLog' } catch { Write-Output '      Error: Unable to start the service.' } ''',
+            ''' try { Stop-Service -Name 'EventLog' -Force } catch { Write-Output '      Error: Unable to stop the service.' } ''',
+        ]
+    },
+    {
+        "group": "Features/Network",
         "name": "File Transfer Protocol (FTP)",
         "tickmark": False,
         "values": [
@@ -802,37 +942,182 @@ objects2 = [
     "values": [
         '''
         try {
-            $uacPolicy = Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' | Select-Object EnableInstallerDetection, FilterAdministratorToken, PromptOnSecureDesktop
+            $uacPolicy = Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' | Select-Object EnableInstallerDetection, FilterAdministratorToken, PromptOnSecureDesktop, ConsentPromptBehaviorAdmin
             Write-Output "`n_________________________________________________________________________________________________________"
-            Write-Host "| UAC Group Policy Settings |" -ForegroundColor Cyan
-            Write-Output "`nEnable Installer Detection: $(
+            Write-Host "|   UAC Group Policy Settings   |" -ForegroundColor Cyan
+            Write-Output "`n      Enable Installer Detection: $(
                 switch ($uacPolicy.EnableInstallerDetection) {
                     0 { 'Disabled' }
                     1 { 'Enabled' }
                     default { 'Unknown' }
                 }
             )"
-            Write-Output "Filter Administrator Token: $(
+            Write-Output "      Filter Administrator Token: $(
                 switch ($uacPolicy.FilterAdministratorToken) {
                     0 { 'Disabled' }
                     1 { 'Enabled' }
                     default { 'Unknown' }
                 }
             )"
-            Write-Output "Prompt On Secure Desktop: $(
+            Write-Output "      Prompt On Secure Desktop: $(
                 switch ($uacPolicy.PromptOnSecureDesktop) {
                     0 { 'Disabled' }
                     1 { 'Enabled' }
                     default { 'Unknown' }
                 }
             )"
-            Write-Output "`n---------------------------"
+            Write-Output "      Consent Prompt Behavior for Admins: $(
+                switch ($uacPolicy.ConsentPromptBehaviorAdmin) {
+                    0 { 'No prompt' }
+                    1 { 'Prompt for credentials on the secure desktop' }
+                    2 { 'Prompt for consent on the secure desktop' }
+                    3 { 'Prompt for consent on the non-secure desktop' }
+                    4 { 'Prompt for credentials on the non-secure desktop' }
+                    default { 'Unknown' }
+                }
+            )"
         } catch {
-            Write-Output "`nError: Unable to retrieve UAC group policy settings."
+            Write-Output "`n      Error: Unable to retrieve UAC group policy settings."
         }
+        ''',
+        ''' 
+        Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name EnableInstallerDetection -Value 0
+        Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name FilterAdministratorToken -Value 0
+        Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name PromptOnSecureDesktop -Value 0
+        Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name ConsentPromptBehaviorAdmin -Value 0
+        ''',
+        '''
+        $uacPolicy = Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' | Select-Object EnableInstallerDetection, FilterAdministratorToken, PromptOnSecureDesktop, ConsentPromptBehaviorAdmin
+        Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name EnableInstallerDetection -Value 1
+        Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name FilterAdministratorToken -Value 1
+        Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name PromptOnSecureDesktop -Value 1
+        Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name ConsentPromptBehaviorAdmin -Value 1
         ''',
         ''' ''',
         ''' ''',
+        ]
+    },
+    {
+    "group": "Features/Network",
+    "name": "Powershell security checks",
+    "tickmark": False,
+    "values": [
+        '''
+        Write-Output "`n_________________________________________________________________________________________________________"
+                    Write-Host "|   Powershell security checks   |" -ForegroundColor Cyan
+        $alwaysYes = $true  # Set this to $false if you want manual confirmation
+
+        # Script execution with persistent "Yes"
+        Write-Host ""
+        Write-Host "      ** PowerShell Security Checks **"
+        Write-Host ""
+        function Check-ExecutionPolicy {
+            try {
+                $machinePolicy = Get-ExecutionPolicy -Scope Machine
+                $userPolicy = Get-ExecutionPolicy -Scope CurrentUser
+                $machineStatus = if ($machinePolicy -eq "Restricted") { "Compliant" } else { "Non-Compliant (Recommended: Restricted)" }
+                $userStatus = if ($userPolicy -eq "Restricted") { "Compliant" } else { "Non-Compliant (Recommended: Restricted)" }
+                Write-Host ("      | Machine Policy         | {0,-20} " -f $machinePolicy)
+                Write-Host ("      | Machine Status         | {0,-40} " -f $machineStatus)
+                Write-Host ("      | User Policy            | {0,-20} " -f $userPolicy)
+                Write-Host ("      | User Status            | {0,-40} " -f $userStatus)
+            } catch {
+                Write-Host "      Error: Unable to retrieve Execution Policy." -ForegroundColor Red
+            }
+        }
+        # Call the function
+        Check-ExecutionPolicy
+
+        # Function to check JEA configuration
+        function Check-JeaConfig {
+        try {
+            $jeaEnabled = Get-Service JeAppHost -ErrorAction Stop | Where-Object {$_.Status -eq "Running"}
+            $jeaStatus = if ($jeaEnabled) { "Enabled" } else { "Disabled" }
+            Write-Host ("      | JEA Service            | {0,-20} " -f $jeaStatus)
+        } catch {
+            Write-Host "      Error: Unable to retrieve JEA configuration." -ForegroundColor Red
+        }
+        }
+
+        # Function to check script signing configuration
+        function Check-ScriptSigning {
+        try {
+            $scriptSigningEnabled = (Get-ExecutionPolicy).PSEnableScriptSigning -eq "RemoteSigned"
+            $signingStatus = if ($scriptSigningEnabled) { "Enabled (RemoteSigned)" } else { "Disabled" }
+            Write-Host ("      | Script Signing         | {0,-40} " -f $signingStatus)
+        } catch {
+            Write-Host "      Error: Unable to retrieve Script Signing configuration." -ForegroundColor Red
+        }
+        }
+
+        # Function to check logging configuration
+        function Check-Logging {
+        try {
+            $winrmLogsEnabled = (Get-WinEvent -ListLog -ErrorAction Stop | Where-Object {$_.LogName -eq "WinRM"}).Enabled
+            $logsStatus = if ($winrmLogsEnabled) { "Enabled (WinRM logs)" } else { "Disabled" }
+            Write-Host ("      | Logging                | {0,-40} " -f $logsStatus)
+        } catch {
+            Write-Host "      Error: Unable to retrieve Logging configuration." -ForegroundColor Red
+        }
+        }
+
+        # Function to check remoting configuration
+        function Check-RemotingConfiguration {
+        try {
+            $remotingEnabled = Get-Service WinRM -ErrorAction Stop | Where-Object {$_.Status -eq "Running"}
+            $remotingStatus = if ($remotingEnabled) { "Enabled" } else { "Disabled" }
+            Write-Host ("      | Remoting Service       | {0,-20} " -f $remotingStatus)
+        } catch {
+            Write-Host "      Error: Unable to retrieve Remoting configuration." -ForegroundColor Red
+        }
+        }
+
+        function Check-BitsadminAvailability {
+        if (Get-Command bitsadmin) {
+            Write-Host ("      | Bitsadmin Availability | {0,-20} " -f "Available")
+        } else {
+            Write-Host ("      | Bitsadmin Availability | {0,-20} " -f "Not Available (unlikely scenario)")
+        }
+        }
+
+        # Check remoting configuration
+        Write-Host ""
+        Write-Host "      ** Remoting Configuration Check **"
+        try {
+        Check-RemotingConfiguration
+        } catch {
+        Write-Host "      Error: Unable to retrieve Remoting configuration." -ForegroundColor Red
+        }
+
+        # Additional security checks
+        Write-Host ""
+        Write-Host "      ** Additional Security Checks **"
+        Check-ScriptSigning
+        Check-BitsadminAvailability
+
+        Write-Host ""
+        ''',
+        ''' 
+        # RESTORATION
+        Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope MachinePolicy -Force
+        Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope UserPolicy -Force
+        Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process -Force
+        Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
+        Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine -Force
+
+        Set-Service WinRM -Status Running
+        ''',
+        '''
+        # Set restricted policy
+        Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope MachinePolicy -Force
+        Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope UserPolicy -Force
+        Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope Process -Force
+        Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope CurrentUser -Force
+        Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope LocalMachine -Force
+
+        # Set remoting configuration
+        Set-Service WinRM -Status Stopped
+        ''',
         ''' ''',
         ''' ''',
         ]
@@ -982,7 +1267,7 @@ objects2 = [
         try {
             Write-Output "`n_________________________________________________________________________________________________________"
             Write-Host "|        Ipconfig        |" -ForegroundColor Cyan
-            ipconfig | Select-String "adapter", "Media", "Connection-specific", "Link-local", "Autoconfiguration", "Subnet", "Default Gateway", "IPv6 Address", "IPv4 Address"
+            ipconfig /all
         } catch {
             Write-Output "`nError: Unable to retrieve Ipconfig information."
         }
@@ -1124,7 +1409,7 @@ objects3 = [
             Write-Host '      Firewall rules for Port 7 exist.'
             $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
         } else {
-            Write-Host '      No firewall rules found for Port 7.'
+            Write-Host '      No OSFortify firewall rules found for Port 7.'
         }
 
         if ($processInfo) {
@@ -1197,7 +1482,7 @@ objects3 = [
             Write-Host '      Firewall rules for Port 20 exist.'
             $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
         } else {
-            Write-Host '      No firewall rules found for Port 20.'
+            Write-Host '      No OSFortify firewall rules found for Port 20.'
         }
 
         if ($processInfo) {
@@ -1270,7 +1555,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 21 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 21.'
+        Write-Host '      No OSFortify firewall rules found for Port 21.'
     }
 
     if ($processInfo) {
@@ -1343,7 +1628,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 22 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 22.'
+        Write-Host '      No OSFortify firewall rules found for Port 22.'
     }
 
     if ($processInfo) {
@@ -1416,7 +1701,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 23 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 23.'
+        Write-Host '      No OSFortify firewall rules found for Port 23.'
     }
 
     if ($processInfo) {
@@ -1489,7 +1774,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 25 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 25.'
+        Write-Host '      No OSFortify firewall rules found for Port 25.'
     }
 
     if ($processInfo) {
@@ -1562,7 +1847,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 37 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 37.'
+        Write-Host '      No OSFortify firewall rules found for Port 37.'
     }
 
     if ($processInfo) {
@@ -1635,7 +1920,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 53 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 53.'
+        Write-Host '      No OSFortify firewall rules found for Port 53.'
     }
 
     if ($processInfo) {
@@ -1708,7 +1993,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 69 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 69.'
+        Write-Host '      No OSFortify firewall rules found for Port 69.'
     }
 
     if ($processInfo) {
@@ -1781,7 +2066,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 80 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 80.'
+        Write-Host '      No OSFortify firewall rules found for Port 80.'
     }
 
     if ($processInfo) {
@@ -1854,7 +2139,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 110 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 110.'
+        Write-Host '      No OSFortify firewall rules found for Port 110.'
     }
 
     if ($processInfo) {
@@ -1927,7 +2212,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 111 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 111.'
+        Write-Host '      No OSFortify firewall rules found for Port 111.'
     }
 
     if ($processInfo) {
@@ -2000,7 +2285,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 123 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 123.'
+        Write-Host '      No OSFortify firewall rules found for Port 123.'
     }
 
     if ($processInfo) {
@@ -2073,7 +2358,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 135 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 135.'
+        Write-Host '      No OSFortify firewall rules found for Port 135.'
     }
 
     if ($processInfo) {
@@ -2146,7 +2431,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 137 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 137.'
+        Write-Host '      No OSFortify firewall rules found for Port 137.'
     }
 
     if ($processInfo) {
@@ -2219,7 +2504,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 139 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 139.'
+        Write-Host '      No OSFortify firewall rules found for Port 139.'
     }
 
     if ($processInfo) {
@@ -2230,252 +2515,36 @@ objects3 = [
         Write-Output "         StartTime: $($processInfo.StartTime)"
         Write-Output "         CPU: $($processInfo.CPU)"
         Write-Output "         Path: $($processInfo.Path)"
-    } else {
-        Write-Host '      No process is using Port 139.'
-    }
-    '''
-    ]
-},
-{
-    "group": "Ports", "name": "Port 143 - Internet Message Access Protocol (IMAP)", "tickmark": False, "values": [
-    '''
-    Write-Output "`n_________________________________________________________________________________________________________"
-    Write-Host "|   Port 143 - Internet Message Access Protocol (IMAP)   |" -ForegroundColor Cyan
-    Write-Output ""
-    $portStatusIPv4 = $null
-    $portStatusIPv6 = $null
-    $firewallRules = $null
-    $processInfo = $null
-    $processPID = $null
+    def test_port(port):
+        try:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            result = sock.connect_ex(('127.0.0.1', port))
+            if result == 0:
+                print(f'      Port {port} is open.')
+            else:
+                print(f'      Port {port} is closed or filtered.')
+            sock.close()
+        except Exception as e:
+            print(f'      Error occurred while testing port {port}: {e}')
 
-    try {
-        $resultIPv4 = Test-NetConnection -ComputerName 127.0.0.1 -Port 143 -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
-        $portStatusIPv4 = $resultIPv4.TcpTestSucceeded
-    } catch {
-        Write-Output "      Error occurred while testing port 143: $_"
-    }
+    def get_process_info(pid):
+        try:
+            process = psutil.Process(pid)
+            print(f'      Port {port} is in use by process {process.name()} (PID: {pid}).')
+            print("      Process Details:")
+            print(f"         Id: {process.pid}")
+            print(f"         Name: {process.name()}")
+            print(f"         StartTime: {process.create_time()}")
+            print(f"         CPU: {process.cpu_percent()}")
+            print(f"         Path: {process.exe()}")
+        except Exception as e:
+            print(f'      Error occurred while retrieving process details: {e}')
 
-    try {
-        $resultIPv6 = Test-NetConnection -ComputerName ::1 -Port 143 -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
-        $portStatusIPv6 = $resultIPv6.TcpTestSucceeded
-    } catch {
-        Write-Output "      Error occurred while testing port 143: $_"
-    }
-
-    try {
-        $firewallRules = Get-NetFirewallRule | Where-Object { ($_.LocalPorts -eq "143") -or ($_.RemotePorts -eq "143") }
-    } catch {
-        Write-Output "      Error occurred while retrieving firewall rules: $_"
-    }
-
-    try {
-        $processPID = Get-NetTCPConnection -LocalPort 143 -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess
-    } catch {
-        Write-Output "      Error occurred while checking if port 143 is in use: $_"
-    }
-
-    if ($processPID) {
-        try {
-            $processInfo = Get-Process -Id $processPID -ErrorAction SilentlyContinue
-        } catch {
-            Write-Output "      Error occurred while retrieving process details: $_"
-        }
-    }
-
-    if ($portStatusIPv4 -and $portStatusIPv6) {
-        Write-Host '      Port 143 is open.'
-    } else {
-        Write-Host '      Port 143 is closed or filtered.'
-    }
-
-    if ($firewallRules) {
-        Write-Host '      Firewall rules for Port 143 exist.'
-        $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
-    } else {
-        Write-Host '      No firewall rules found for Port 143.'
-    }
-
-    if ($processInfo) {
-        Write-Host "      Port 143 is in use by process $($processInfo.Name) (PID: $($processInfo.Id))."
-        Write-Output "      Process Details:"
-        Write-Output "         Id: $($processInfo.Id)"
-        Write-Output "         Name: $($processInfo.Name)"
-        Write-Output "         StartTime: $($processInfo.StartTime)"
-        Write-Output "         CPU: $($processInfo.CPU)"
-        Write-Output "         Path: $($processInfo.Path)"
-    } else {
-        Write-Host '      No process is using Port 143.'
-    }
-    '''
-    ]
-},
-{
-    "group": "Ports", "name": "Port 161 - Simple Network Management Protocol (SNMP)", "tickmark": False, "values": [
-    '''
-    Write-Output "`n_________________________________________________________________________________________________________"
-    Write-Host "|   Port 161 - Simple Network Management Protocol (SNMP)   |" -ForegroundColor Cyan
-    Write-Output ""
-    $portStatusIPv4 = $null
-    $portStatusIPv6 = $null
-    $firewallRules = $null
-    $processInfo = $null
-    $processPID = $null
-
-    try {
-        $resultIPv4 = Test-NetConnection -ComputerName 127.0.0.1 -Port 161 -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
-        $portStatusIPv4 = $resultIPv4.TcpTestSucceeded
-    } catch {
-        Write-Output "      Error occurred while testing port 161: $_"
-    }
-
-    try {
-        $resultIPv6 = Test-NetConnection -ComputerName ::1 -Port 161 -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
-        $portStatusIPv6 = $resultIPv6.TcpTestSucceeded
-    } catch {
-        Write-Output "      Error occurred while testing port 161: $_"
-    }
-
-    try {
-        $firewallRules = Get-NetFirewallRule | Where-Object { ($_.LocalPorts -eq "161") -or ($_.RemotePorts -eq "161") }
-    } catch {
-        Write-Output "      Error occurred while retrieving firewall rules: $_"
-    }
-
-    try {
-        $processPID = Get-NetTCPConnection -LocalPort 161 -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess
-    } catch {
-        Write-Output "      Error occurred while checking if port 161 is in use: $_"
-    }
-
-    if ($processPID) {
-        try {
-            $processInfo = Get-Process -Id $processPID -ErrorAction SilentlyContinue
-        } catch {
-            Write-Output "      Error occurred while retrieving process details: $_"
-        }
-    }
-
-    if ($portStatusIPv4 -and $portStatusIPv6) {
-        Write-Host '      Port 161 is open.'
-    } else {
-        Write-Host '      Port 161 is closed or filtered.'
-    }
-
-    if ($firewallRules) {
-        Write-Host '      Firewall rules for Port 161 exist.'
-        $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
-    } else {
-        Write-Host '      No firewall rules found for Port 161.'
-    }
-
-    if ($processInfo) {
-        Write-Host "      Port 161 is in use by process $($processInfo.Name) (PID: $($processInfo.Id))."
-        Write-Output "      Process Details:"
-        Write-Output "         Id: $($processInfo.Id)"
-        Write-Output "         Name: $($processInfo.Name)"
-        Write-Output "         StartTime: $($processInfo.StartTime)"
-        Write-Output "         CPU: $($processInfo.CPU)"
-        Write-Output "         Path: $($processInfo.Path)"
-    } else {
-        Write-Host '      No process is using Port 161.'
-    }
-    '''
-    ]
-},
-{
-    "group": "Ports", "name": "Port 162 - Simple Network Management Protocol Trap (SNMP Trap)", "tickmark": False, "values": [
-    '''
-    Write-Output "`n_________________________________________________________________________________________________________"
-    Write-Host "|   Port 162 - Simple Network Management Protocol Trap (SNMP Trap)   |" -ForegroundColor Cyan
-    Write-Output ""
-    $portStatusIPv4 = $null
-    $portStatusIPv6 = $null
-    $firewallRules = $null
-    $processInfo = $null
-    $processPID = $null
-
-    try {
-        $resultIPv4 = Test-NetConnection -ComputerName 127.0.0.1 -Port 162 -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
-        $portStatusIPv4 = $resultIPv4.TcpTestSucceeded
-    } catch {
-        Write-Output "      Error occurred while testing port 162: $_"
-    }
-
-    try {
-        $resultIPv6 = Test-NetConnection -ComputerName ::1 -Port 162 -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
-        $portStatusIPv6 = $resultIPv6.TcpTestSucceeded
-    } catch {
-        Write-Output "      Error occurred while testing port 162: $_"
-    }
-
-    try {
-        $firewallRules = Get-NetFirewallRule | Where-Object { ($_.LocalPorts -eq "162") -or ($_.RemotePorts -eq "162") }
-    } catch {
-        Write-Output "      Error occurred while retrieving firewall rules: $_"
-    }
-
-    try {
-        $processPID = Get-NetTCPConnection -LocalPort 162 -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess
-    } catch {
-        Write-Output "      Error occurred while checking if port 162 is in use: $_"
-    }
-
-    if ($processPID) {
-        try {
-            $processInfo = Get-Process -Id $processPID -ErrorAction SilentlyContinue
-        } catch {
-            Write-Output "      Error occurred while retrieving process details: $_"
-        }
-    }
-
-    if ($portStatusIPv4 -and $portStatusIPv6) {
-        Write-Host '      Port 162 is open.'
-    } else {
-        Write-Host '      Port 162 is closed or filtered.'
-    }
-
-    if ($firewallRules) {
-        Write-Host '      Firewall rules for Port 162 exist.'
-        $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
-    } else {
-        Write-Host '      No firewall rules found for Port 162.'
-    }
-
-    if ($processInfo) {
-        Write-Host "      Port 162 is in use by process $($processInfo.Name) (PID: $($processInfo.Id))."
-        Write-Output "      Process Details:"
-        Write-Output "         Id: $($processInfo.Id)"
-        Write-Output "         Name: $($processInfo.Name)"
-        Write-Output "         StartTime: $($processInfo.StartTime)"
-        Write-Output "         CPU: $($processInfo.CPU)"
-        Write-Output "         Path: $($processInfo.Path)"
-    } else {
-        Write-Host '      No process is using Port 162.'
-    }
-    '''
-    ]
-},
-{
-    "group": "Ports", "name": "Port 389 - Lightweight Directory Access Protocol (LDAP)", "tickmark": False, "values": [
-    '''
-    Write-Output "`n_________________________________________________________________________________________________________"
-    Write-Host "|   Port 389 - Lightweight Directory Access Protocol (LDAP)   |" -ForegroundColor Cyan
-    Write-Output ""
-    $portStatusIPv4 = $null
-    $portStatusIPv6 = $null
-    $firewallRules = $null
-    $processInfo = $null
-    $processPID = $null
-
-    try {
-        $resultIPv4 = Test-NetConnection -ComputerName 127.0.0.1 -Port 389 -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
-        $portStatusIPv4 = $resultIPv4.TcpTestSucceeded
-    } catch {
-        Write-Output "      Error occurred while testing port 389: $_"
-    }
-
-    try {
-        $resultIPv6 = Test-NetConnection -ComputerName ::1 -Port 389 -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
+    test_port(139)
+    test_port(143)
+    test_port(161)
+    test_port(162)
+    test_port(389)
         $portStatusIPv6 = $resultIPv6.TcpTestSucceeded
     } catch {
         Write-Output "      Error occurred while testing port 389: $_"
@@ -2511,7 +2580,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 389 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 389.'
+        Write-Host '      No OSFortify firewall rules found for Port 389.'
     }
 
     if ($processInfo) {
@@ -2584,7 +2653,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 443 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 443.'
+        Write-Host '      No OSFortify firewall rules found for Port 443.'
     }
 
     if ($processInfo) {
@@ -2657,7 +2726,7 @@ objects3 = [
         Write-Host '      Firewall rules for Port 445 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 445.'
+        Write-Host '      No OSFortify firewall rules found for Port 445.'
     }
 
     if ($processInfo) {
@@ -2735,7 +2804,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 636 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 636.'
+        Write-Host '      No OSFortify firewall rules found for Port 636.'
     }
 
     if ($processInfo) {
@@ -2808,7 +2877,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 993 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 993.'
+        Write-Host '      No OSFortify firewall rules found for Port 993.'
     }
 
     if ($processInfo) {
@@ -2881,7 +2950,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 995 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 995.'
+        Write-Host '      No OSFortify firewall rules found for Port 995.'
     }
 
     if ($processInfo) {
@@ -2954,7 +3023,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 989 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 989.'
+        Write-Host '      No OSFortify firewall rules found for Port 989.'
     }
 
     if ($processInfo) {
@@ -3027,7 +3096,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 990 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 990.'
+        Write-Host '      No OSFortify firewall rules found for Port 990.'
     }
 
     if ($processInfo) {
@@ -3100,7 +3169,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 1433 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 1433.'
+        Write-Host '      No OSFortify firewall rules found for Port 1433.'
     }
 
     if ($processInfo) {
@@ -3173,7 +3242,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 1434 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 1434.'
+        Write-Host '      No OSFortify firewall rules found for Port 1434.'
     }
 
     if ($processInfo) {
@@ -3246,7 +3315,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 1723 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 1723.'
+        Write-Host '      No OSFortify firewall rules found for Port 1723.'
     }
 
     if ($processInfo) {
@@ -3319,7 +3388,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 1812 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 1812.'
+        Write-Host '      No OSFortify firewall rules found for Port 1812.'
     }
 
     if ($processInfo) {
@@ -3392,7 +3461,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 1813 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 1813.'
+        Write-Host '      No OSFortify firewall rules found for Port 1813.'
     }
 
     if ($processInfo) {
@@ -3465,7 +3534,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 3268 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 3268.'
+        Write-Host '      No OSFortify firewall rules found for Port 3268.'
     }
 
     if ($processInfo) {
@@ -3538,7 +3607,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 3269 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 3269.'
+        Write-Host '      No OSFortify firewall rules found for Port 3269.'
     }
 
     if ($processInfo) {
@@ -3611,7 +3680,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 3389 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 3389.'
+        Write-Host '      No OSFortify firewall rules found for Port 3389.'
     }
 
     if ($processInfo) {
@@ -3684,7 +3753,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 5060 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 5060.'
+        Write-Host '      No OSFortify firewall rules found for Port 5060.'
     }
 
     if ($processInfo) {
@@ -3757,7 +3826,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 5061 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 5061.'
+        Write-Host '      No OSFortify firewall rules found for Port 5061.'
     }
 
     if ($processInfo) {
@@ -3830,7 +3899,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 5190 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 5190.'
+        Write-Host '      No OSFortify firewall rules found for Port 5190.'
     }
 
     if ($processInfo) {
@@ -3903,7 +3972,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 5631 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 5631.'
+        Write-Host '      No OSFortify firewall rules found for Port 5631.'
     }
 
     if ($processInfo) {
@@ -3976,7 +4045,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 5632 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 5632.'
+        Write-Host '      No OSFortify firewall rules found for Port 5632.'
     }
 
     if ($processInfo) {
@@ -4049,7 +4118,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 5800 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 5800.'
+        Write-Host '      No OSFortify firewall rules found for Port 5800.'
     }
 
     if ($processInfo) {
@@ -4122,7 +4191,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 5900 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 5900.'
+        Write-Host '      No OSFortify firewall rules found for Port 5900.'
     }
 
     if ($processInfo) {
@@ -4195,7 +4264,7 @@ objects4 = [
         Write-Host '      Firewall rules for Port 8080 exist.'
         $firewallRules | Select-Object DisplayName, Direction, Action, Profile, Enabled | Format-Table
     } else {
-        Write-Host '      No firewall rules found for Port 8080.'
+        Write-Host '      No OSFortify firewall rules found for Port 8080.'
     }
 
     if ($processInfo) {
@@ -4244,7 +4313,7 @@ def cleanup_curses():
 index = 0
 logical_position = 0
 graphic_position = 0
-cursor_start = 25
+cursor_start = 26
 current_objects = objects
 
 KEY_SYSTEM_INFORMATIONS = ord("i")
@@ -4265,7 +4334,7 @@ def display_objects():
      `Y8bood8P'  8""88888P'  o888o        `Y8bod8P' d888b      "888" o888o o888o       .8'     
                                                                                    .o..P'      
                                                                                   `Y8P'       
-    OSFortify v1.6.0, by DannnyzZ
+    OSFortify v2.0, by DannnyzZ
 ╚═══════════════════════════════════════════════════════════════════════════════════════════════╝"""
     stdscr.addstr(graphic)
 
@@ -4276,6 +4345,7 @@ def display_objects():
   S: Save to file              E: Execute tickmarked options            H: Help                 
   R: Refresh interface         C: Change configuration                  Q: Quit  
   N: Change objects            I: System informations
+  P: Security policies         V: Event Viewer
 ╚═══════════════════════════════════════════════════════════════════════════════════════════════╝"""
     stdscr.addstr(options_table)
 
@@ -4322,38 +4392,50 @@ def display_objects():
 def display_help():
     stdscr.refresh()
     cmd = (
-        'mode 116,26 && echo   =============================================================================================================== && '
-        'echo                                                   * INTRODUCTION *                                                && '
-        'echo   =============================================================================================================== && '
-        'echo      This program is a terminal-based interface designed to manage system services, Features/Network, and ports.  && '
-        'echo   =============================================================================================================== && '
-        'echo                                              * HOW TO USE THE PROGRAM *                                           && '
-        'echo   =============================================================================================================== && '
-        'echo     1. Use arrows to navigate through the list of services/features/network/ports.                                && '
-        'echo     2. Toggle tickmark with Enter.                                                                                && '
-        'echo     3. Choose the type of function with \'C\'.                                                                    && '
-        'echo     4. Execute the desired configuration with \'E\', and save the configuration with \'S\'.                       && '
-        'echo   =============================================================================================================== && '
-        'echo                                                    * FUNCTIONS *                                                  && '
-        'echo   =============================================================================================================== && '
-        'echo     1. Navigation:               Use the UP and DOWN arrow keys to navigate.                                      && '
-        'echo     2. Toggle:                   Press ENTER to select or deselect the current option.                            && '
-        'echo     3. Change Configuration:     Press \'C\' to modify configurations for the selected option.                    && '
-        'echo     4. Execution:                Press \'E\' to implement the tickmarked selections.                              && '
-        'echo     5. Save:                     Press \'S\' to preserve your current configuration to a file.                    && '
-        'echo     6. Refresh:                  Press \'R\' to clear the interface and refresh all information.                  && '
-        'echo     7. Help:                     Press \'H\' to open a separate window displaying instructions for program use.   && '
-        'echo     8. System Information:       Press \'I\' to display key system information in a new terminal window.          && '
-        'echo     9. Quit:                     Press \'Q\' to close the application.                                            && '
+        'echo   && '
+        'mode 116,30 && echo   =============================================================================================================== && '
+        'echo                                                   * INTRODUCTION *                                                 && '
+        'echo   ===============================================================================================================  && '
+        'echo      This program is a terminal-based interface designed to manage system services, features, network, and ports.  && '
+        'echo   ===============================================================================================================  && '
+        'echo                                              * HOW TO USE THE PROGRAM *                                            && '
+        'echo   ===============================================================================================================  && '
+        'echo     1. Use arrows to navigate through the list of services/features/network/ports.                                 && '
+        'echo     2. Toggle tickmark with Enter.                                                                                 && '
+        'echo     3. Choose the type of function with \'C\'.                                                                     && '
+        'echo     4. Execute the desired configuration with \'E\', and save the configuration with \'S\'.                        && '
+        'echo   ===============================================================================================================  && '
+        'echo                                                    * FUNCTIONS *                                                   && '
+        'echo   ===============================================================================================================  && '
+        'echo     1.  Navigation:               Use the UP and DOWN arrow keys to navigate.                                      && '
+        'echo     2.  Toggle:                   Press ENTER to select or deselect the current option.                            && '
+        'echo     3.  Change Configuration:     Press \'C\' to modify configurations for the selected option.                    && '
+        'echo     4.  Execution:                Press \'E\' to implement the tickmarked selections.                              && '
+        'echo     5.  Save:                     Press \'S\' to preserve your current configuration to a file.                    && '
+        'echo     6.  Refresh:                  Press \'R\' to clear the interface and refresh all information.                  && '
+        'echo     7.  Help:                     Press \'H\' to open a separate window displaying instructions for program use.   && '
+        'echo     8.  System Information:       Press \'I\' to display key system information in a new terminal window.          && '
+        'echo     9.  Security policies:        Press \'P\' to use security policies module (GPO).                               && '
+        'echo     10. Event Viewer:             Press \'V\' to use Event Viewer module                                           && '
+        'echo     11. Quit:                     Press \'Q\' to close the application.                                            && '
         'echo. && pause'
     )
     os.system('start cmd /k "' + cmd + '"')
     stdscr.refresh()
 
+
+def event_viewer():
+    script_path = r'C:\Users\OSFortify\Event_Viewer_Module.ps1'
+    subprocess.Popen(['powershell.exe', '-File', script_path], creationflags=subprocess.CREATE_NEW_CONSOLE)
+
+
+def security_policies():
+    script_path = r'C:\Users\OSFortify\OSFortify_security_policies_module.ps1'
+    subprocess.Popen(['powershell.exe', '-File', script_path], creationflags=subprocess.CREATE_NEW_CONSOLE)
+    
 # FUNCTION - GENERATE SYSTEM INFO
 def execute_system_informations():
-    script = '''
-
+    script = r'''
 # Accounts information
 
 $users = Get-WmiObject -Class Win32_UserAccount
@@ -4496,9 +4578,34 @@ $securityProcessorStatus = Get-CimInstance -Namespace "root\SecurityCenter2" -Cl
 if ($securityProcessorStatus) {
     Write-Output "    Security Processor Status: Enabled (Antivirus: $securityProcessorStatus)"
 } else {
-    Write-Output "        Security Processor Status: Disabled"
+    Write-Output "    Security Processor Status: Disabled"
 }
 Write-Output "   "
+#Software Inventory
+Write-Output "------|Software Inventory|----------------------------------------------"
+Write-Output "   "
+# Get list of installed software on the system
+$SoftwareInventory = Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, Publisher, InstallDate
+
+# Display the software inventory
+Write-Output "    Software Inventory:"
+$SoftwareInventory | Format-Table -AutoSize
+
+# Retrieve package upgrade information
+$upgradeInfo = winget upgrade
+
+# Format the output into a table
+$table = $upgradeInfo | Format-Table -AutoSize -Property PackageId, CurrentVersion, AvailableVersion, Source
+
+# Output the formatted table
+$table
+
+# Export software inventory to a CSV file
+$SoftwareInventory | Export-Csv -Path "C:\Users\OSFortify\Software_Inventory.csv" -NoTypeInformation
+
+# Optional: Log the software inventory details to a text file
+$SoftwareInventory | Out-File -FilePath "C:\Users\OSFortify\Software_Inventory.txt" -Append
+
 '''
     script_path = "system_informations.ps1"
     with open(script_path, "w") as file:
@@ -4653,55 +4760,62 @@ def main():
     position = 0
 
     while True:
-        key = stdscr.getch()
+        try:
+            key = stdscr.getch()
 
-        if key == curses.KEY_RESIZE:
-            stdscr.erase()
-            # Get the new screen size
-            size = os.get_terminal_size()
-            try:
-                # Try to resize the terminal (this may not be supported on all platforms)
-                curses.resizeterm(size.lines, size.columns)
-            except AttributeError:
-                pass
-            refresh_interface()
-        elif key == curses.KEY_UP:
-            if position > 0:
-                position -= 1
-                logical_position = max(logical_position - 1, 0)
-                graphic_position = max(graphic_position - 1, 0)
+            if key == curses.KEY_RESIZE:
+                stdscr.erase()
+                # Get the new screen size
+                size = os.get_terminal_size()
+                try:
+                    curses.resizeterm(size.lines, size.columns)
+                except AttributeError:
+                    pass
                 refresh_interface()
-        elif key == curses.KEY_DOWN:
-            if position < len(objects) - 1:
-                position += 1
-                logical_position = min(logical_position + 1, len(objects) - 1)
-                graphic_position = min(graphic_position + 1, len(objects) - 1)
+            elif key == curses.KEY_UP:
+                if position > 0:
+                    position -= 1
+                    logical_position = max(logical_position - 1, 0)
+                    graphic_position = max(graphic_position - 1, 0)
+                    refresh_interface()
+            elif key == curses.KEY_DOWN:
+                if position < len(objects) - 1:
+                    position += 1
+                    logical_position = min(logical_position + 1, len(objects) - 1)
+                    graphic_position = min(graphic_position + 1, len(objects) - 1)
+                    refresh_interface()
+            elif key == ord("\n"):
+                toggle_tickmark(position)
                 refresh_interface()
-        elif key == ord("\n"):
-            toggle_tickmark(position)
-            refresh_interface()
-        elif key == ord("a") or key == ord("A"):
-            enable_all_tickmarks()
-        elif key == ord("u") or key == ord("U"):
-            unmark_all_tickmarks()
-        elif key == ord("s") or key == ord("S"):
-            save_progress()
-        elif key == ord("c") or key == ord("C"):
-            change_configuration()
-        elif key == ord("h") or key == ord("H"):
-            display_help()
-        elif key == ord("r") or key == ord("R"):
-            refresh_interface()
-        elif key == ord("e") or key == ord("E"):
-            execute_tickmarked_options()
-        elif key == ord("q") or key == ord("Q"):
-            break
-        elif key == ord("n") or key == ord("N"):
-            next_objects_list()
-        if key == KEY_SYSTEM_INFORMATIONS:
-            execute_system_informations()
+            elif key == ord("a") or key == ord("A"):
+                enable_all_tickmarks()
+            elif key == ord("u") or key == ord("U"):
+                unmark_all_tickmarks()
+            elif key == ord("s") or key == ord("S"):
+                save_progress()
+            elif key == ord("c") or key == ord("C"):
+                change_configuration()
+            elif key == ord("h") or key == ord("H"):
+                display_help()
+            elif key == ord("r") or key == ord("R"):
+                refresh_interface()
+            elif key == ord("e") or key == ord("E"):
+                execute_tickmarked_options()
+            elif key == ord("q") or key == ord("Q"):
+                break
+            elif key == ord("n") or key == ord("N"):
+                next_objects_list()
+            elif key == ord("p") or key == ord("P"):
+                security_policies()
+            elif key == ord("v") or key == ord("V"):
+                event_viewer()
+            if key == KEY_SYSTEM_INFORMATIONS:
+                execute_system_informations()
 
-        refresh_interface()
+            refresh_interface()
+
+        except Exception as e:
+            print(f"An error occurred in the main loop: {e}")
 
     cleanup_curses()
 
