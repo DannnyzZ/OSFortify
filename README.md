@@ -274,8 +274,10 @@ python C:\Users\Danny\Desktop\osfortify.py
 ```
 
 Secondary modules (Event Viewer, GPO):
-1. Use corresponding button (P: Security policies, V: Event Viewer)
+1. Inside OSFortify instance, use corresponding button (P: Security policies, V: Event Viewer) to launch dedicated module:
 2. Follow the instructions on the screen.
+3. Enter the choosen option.
+4. Confirm with ENTER.
 
 ![OSFortify_GUI_Event_Module](https://github.com/DannnyzZ/OSFortify/assets/119814239/38ddbc2e-3bf7-4d4d-863f-132a4682c262)
   
