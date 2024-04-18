@@ -19,7 +19,7 @@
 </p>
 
 
-![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-4429-25A9E0.svg?style=flat)
+![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-4825-25A9E0.svg?style=flat)
 ![Code Size](https://img.shields.io/badge/Code%20Size-185%20KB-25A9E0.svg?style=flat)
 </div>
 
@@ -172,9 +172,8 @@ OSFortify encompasses an extensive list of important ports, such as SSH (Port 22
 ## 🚀 Getting Started
 
 <div align="center">
-  <img src="https://github.com/DannnyzZ/OSFortify/assets/119814239/ae897cfc-2a04-4dc8-a691-1c109f861c46" alt="gui_screen">
+  <img src="https://github.com/DannnyzZ/OSFortify/assets/119814239/6d2d6b0e-448c-4b7a-94d9-0a29b3c67ad7" alt="gui_screen">
 </div>
-
 
 ### ✔️ Prerequisites
 
