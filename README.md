@@ -264,22 +264,24 @@ python C:\Users\Danny\Desktop\osfortify.py
 
 **Use OSFortify wisely to enhance security while minimizing risks.**
 
+
 ## 🗺 Roadmap
+
 
 > - [X] ` Task 1: Multiple bug fixes`
 > - [X] ` Task 2: New features: tidy and colored output`
-> - [X] ` *BIG* feature 4: Network analysis: netstat, routing, DNS informations, local hosts, IPv4/IPv6 of device, Gateway, Netmask and many more!`
-
+> - [X] ` Task 3: *BIG* feature 4: Network analysis: netstat, routing, DNS informations, local hosts, IPv4/IPv6 of device, Gateway, Netmask and many more!`
+> - [X] ` Task 4: New features and services: PowerShell, Command prompt, User Account Control, Autorun!`
+> - [ ] ` Task 5: Module - Event Viewer support`
+> - [ ] ` Task 6: Module - Security Baseline GPO`
 
 > - [ ] ` Incoming feature 1: Exporting results to PDF file`
 > - [ ] ` Incoming feature 2: New services: HDMI, Mini-Jack, DVI, CD-DVD, CTRL+ALT+DEL on login prompt, Trivial File Transfer Protocol`
-> - [ ] ` Incoming feature 3: One button evaluation of security state (Risk analysis)`
-> - [ ] ` Incoming feature 4: More MS services: bitsadmin, curl`
-> - [ ] ` Event viewer support (critical events)`
+> - [ ] ` Incoming feature 3: One button evaluation of security state (Risk analysis)
+> - [ ] ` Incoming feature 4: Improving istallaton process.
 
 > - [ ] ` Future Update 1: Moving scripts to libraries, improving by that modularity and variety of features`
 > - [ ] ` Proof of Concept: IT Auditing via SSH`
-
 
 ---
 
@@ -323,7 +325,8 @@ Non-Commercial Use ONLY.
   `ℹ️  Logo.com https://logo.com`
 
   `ℹ️  Logo.com https://patorjk.com/software/taag`
-  
+
+  `ℹ️ Microsoft Security Compliance Toolkit 1.0 https://www.microsoft.com/en-us/download/details.aspx?id=55319`
 
 ---
 
@@ -341,5 +344,15 @@ OSFortify 1.7
   - Netstat: Displays active network connections and listening ports, along with the processes using them.
   - Autonomous System Numbers: Retrieves and displays information about the Autonomous System Number (ASN) for a given IP address using the ip-api.com service. Displays IP address, ASN, and AS Name if available.
   - Netstat: Displays active network connections and listening ports, along with the processes using them.
- 
+
+ OSFortify 2.0
+- New module - Event Viewer - gives possibilities to retrieve choosen logs from the system.
+- New module - GPO Policies - gives possibilities to create backup of existing GPO's, implement OSFortify Security Baseline or restore to previous state of GPO policies.
+- New functions:
+  - PowerShell configurations
+  - Command prompt configurations
+  - Autorun
+  - User Account Control
+
+  
 ---
