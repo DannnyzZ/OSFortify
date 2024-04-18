@@ -260,7 +260,7 @@ C:\Users\OSFortify
 
 ### 🎮 Using OSFortify
 
-
+Main module:
 1. Launch OSFortify from the PowerShell console:
 ```sh
 python osfortify.py
@@ -272,6 +272,15 @@ Example of use:
 ```sh
 python C:\Users\Danny\Desktop\osfortify.py
 ```
+
+Secondary modules (Event Viewer, GPO):
+1. Use corresponding button (P: Security policies, V: Event Viewer)
+2. Follow the instructions on the screen.
+
+![OSFortify_GUI_Event_Module](https://github.com/DannnyzZ/OSFortify/assets/119814239/38ddbc2e-3bf7-4d4d-863f-132a4682c262)
+  
+![OSFortify_GUI_GPO_Module](https://github.com/DannnyzZ/OSFortify/assets/119814239/fa2eeba2-5322-44fa-921f-bc59343f5552)
+
 
 ---
 
