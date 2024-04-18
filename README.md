@@ -174,6 +174,8 @@ OSFortify brings robust control to your system's **services, features, and ports
 
 </details>
 
+*Event Viewer Module* - OSFortify utilizes the Event Viewer to extract the most important logs across various categories, ensuring comprehensive visibility into your system's security posture.
+
 <details closed><summary>Event Viewer Module</summary>
 
 | Event Viewer Category | Details |
@@ -188,7 +190,7 @@ OSFortify brings robust control to your system's **services, features, and ports
 
 </details>
 
-*Security Baseline* - OSFortify leverages LGPO via API to seamlessly implement and manage GPO policies, ensuring efficient and reliable policy enforcement. It also provides the capability to backup and restore GPO configurations, giving you peace of mind knowing that your policies are securely stored and easily recoverable in case of emergencies.
+*Security Baseline Module* - OSFortify leverages LGPO via API to seamlessly implement and manage GPO policies, ensuring efficient and reliable policy enforcement. It also provides the capability to backup and restore GPO configurations, giving you peace of mind knowing that your policies are securely stored and easily recoverable in case of emergencies.
   
 <details closed><summary>Security Baseline Module</summary>
 
