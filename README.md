@@ -66,19 +66,18 @@ OSFortify brings robust control to your system's **services, features, and ports
 | **✔️ Secure Execution** | OSFortify emphasizes secure execution of commands and scripts, crucial for system integrity and cybersecurity. It ensures proper progress tracking during script execution and safeguards against unauthorized access. |
 | **🔐 Enhanced Security** | OSFortify contributes to enhanced security by enabling users to selectively manage services, features, and ports. This granular control aids in system hardening, mitigating potential vulnerabilities, and bolstering overall cybersecurity measures. |
 | **🔌 Flexibility** | The program's dynamic configuration switching and adaptable options provide flexibility to tailor system settings to specific needs. This accommodates various security profiles and allows users to optimize their systems for different scenarios. |
-| **📶 Insightful Data** | OSFortify offers users valuable insights into their system's architecture through detailed system information retrieval. This aids decision-making, system understanding, and helps identify potential areas for further optimization. 
+| **📶 Insightful Data** | OSFortify offers users valuable insights into their system's architecture through detailed system information retrieval. This aids decision-making, system understanding, and helps identify potential areas for further optimization. |
+| **📝 Log controler** | OSFortify utilizes the Event Viewer to extract the most important logs across various categories, ensuring comprehensive visibility into your system's security posture. |
+| **📕 Comprehensive Security Baseline** | The software goes beyond the standard Microsoft Security Baseline Toolkit v. 1.0, actively modifying 952 Microsoft GPO policies to provide enhanced security measures. This translates to a significant increase of 635 more policies compared to the Microsoft baseline.
+- OSFortify leverages LGPO via API to seamlessly implement and manage GPO policies, ensuring efficient and reliable policy enforcement.
+- Backup and Restore: OSFortify provides the capability to backup and restore GPO configurations, giving you peace of mind knowing that your policies are securely stored and easily recoverable in case of emergencies. |
+
 - *Services and Features*
 OSFortify encompasses a comprehensive range of essential services and features, including guest user account management, FTP control, oversight of Windows Media Player, and management of USB ports. These functionalities contribute significantly to system security by offering control over potential entry points, data transfers, and media-related threats.
 - *Windows Features*
 The program covers an array of critical Windows features, including Windows Defender, Windows Firewall, Windows Update, remote management functionalities, and more. By providing control over these features, OSFortify enhances cybersecurity by allowing administrators to fortify defenses, manage remote access, and stay updated against known vulnerabilities.
 - *Ports*
 OSFortify encompasses an extensive list of important ports, such as SSH (Port 22), HTTPS (Port 443), RDP (Port 3389), and many more. These ports serve as critical communication channels, and their proper management through OSFortify enhances cybersecurity by preventing unauthorized access, securing data transfers, and protecting against potential exploits. |
-| **📝 Log controler** | OSFortify utilizes the Event Viewer to extract the most important logs across various categories, ensuring comprehensive visibility into your system's security posture. |
-| **📕 Comprehensive Security Baseline** | The software goes beyond the standard Microsoft Security Baseline Toolkit v. 1.0, actively modifying 952 Microsoft GPO policies to provide enhanced security measures. This translates to a significant increase of 635 more policies compared to the Microsoft baseline.
-- OSFortify leverages LGPO via API to seamlessly implement and manage GPO policies, ensuring efficient and reliable policy enforcement.
-- Backup and Restore: OSFortify provides the capability to backup and restore GPO configurations, giving you peace of mind knowing that your policies are securely stored and easily recoverable in case of emergencies. |
-| **🔗 Comprehensive Functionality** | OSFortify encompasses a diverse array of essential services, features, and ports, collectively enhancing system security, hardening, and administration. These elements form a critical foundation for a robust and secure computing environment, fortifying against potential threats and vulnerabilities. |
- |
 
 ---
 
