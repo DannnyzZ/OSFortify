@@ -52,7 +52,9 @@ OSFortify is a sophisticated terminal-based utility designed to enhance system s
 
 The primary **purpose** of OSFortify is to provide an advanced yet accessible tool for users to bolster their system's security posture, elevate operating system hardening, and seamlessly administer critical system functions. By enabling users to interact with their system through a curated selection of options, OSFortify bridges the gap between cybersecurity and user experience.
 
-OSFortify brings robust control to your system's **services, features, and ports**. It allows real-time status checks, seamless activation or deactivation during boot, and dynamic adjustments on-the-fly. With OSFortify, you can finely manage your system's components, optimize resources, and bolster security.
+OSFortify brings robust control to your system's **services, features, and ports**. It allows real-time status checks, seamless activation or deactivation during boot, and dynamic adjustments on-the-fly. 
+
+With OSFortify, you can finely manage your system's components and bolster security of end-device by implementing comprehensive built-in security baseline, consisting of over 950 unique GPO policies.
 
 
 ---
