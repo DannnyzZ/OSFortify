@@ -405,6 +405,10 @@ OSFortify 1.7
   - Command prompt configurations
   - Autorun
   - User Account Control
+  - Saving configuration to file, now has a built-in raport generating function, which will create full raport of results on the designated path. Default path: C:\Users\OSFortify_Audit_Report.txt
+ 
+ - Bug fixes: indentation
+ - Additional comments to clarify code
 
   
 ---
