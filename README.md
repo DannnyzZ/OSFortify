@@ -331,6 +331,9 @@ Secondary modules (Event Viewer, GPO):
 > - [ ] ` Incoming feature 3: One button evaluation of security state (Risk analysis)`
 > - [ ] ` Incoming improvement 1: Improving istallaton process.`
 > - [ ] ` Incoming improvement 2: utilizing secedit.exe to apply GPO's.`
+> - [ ] ` New services: SSH
+> - [ ] ` Incoming feature 4: drivers listing. `
+> - [ ] ` Incoming feature 5: updating all software and drivers. `
 
 > - [ ] ` Future Update 1: Moving scripts to libraries, improving by that modularity and variety of features`
 > - [ ] ` Proof of Concept: IT Auditing via SSH`
@@ -409,6 +412,11 @@ OSFortify 1.7
  
  - Bug fixes: indentation
  - Additional comments to clarify code
+
+ OSFortify 2.0.1 (not released yet)
+ - Bug fixes
+ - Additional error handling
+ - Fixed GPO backup feature for some systems.
 
   
 ---
