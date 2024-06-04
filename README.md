@@ -334,6 +334,8 @@ Secondary modules (Event Viewer, GPO):
 > - [ ] ` New services: SSH
 > - [ ] ` Incoming feature 4: drivers listing. `
 > - [ ] ` Incoming feature 5: updating all software and drivers. `
+> - [ ] ` Incoming feature 6: SNMP.`
+> - [ ] ` Incoming feature 7: More unencrypted traffic.`
 
 > - [ ] ` Future Update 1: Moving scripts to libraries, improving by that modularity and variety of features`
 > - [ ] ` Proof of Concept: IT Auditing via SSH`
